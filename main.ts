@@ -562,7 +562,7 @@ namespace Utils {
         await delay(250) */
 
         try {
-            const token: string = "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"
+            const token: string = "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"
             const response: Response = await fetch(
                 "https://api.github.com/repos/Toolbox-io/Toolbox-io/releases/latest",
                 {
