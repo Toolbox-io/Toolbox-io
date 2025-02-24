@@ -499,7 +499,7 @@ var Utils;
         loading.remove()
         await delay(250) */
         try {
-            const token = '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';
+            const token = "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";
             const response = await fetch("https://api.github.com/repos/Toolbox-io/Toolbox-io/releases/latest", {
                 method: "GET",
                 headers: {
