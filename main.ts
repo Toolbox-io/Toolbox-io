@@ -562,13 +562,11 @@ namespace Utils {
         await delay(250) */
 
         try {
-            const token: string = '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';
             const response: Response = await fetch(
                 "https://api.github.com/repos/Toolbox-io/Toolbox-io/releases/latest",
                 {
                     method: "GET",
                     headers: {
-                        "Authorization": `Bearer ${token}`,
                         "Accept": "application/vnd.github+json",
                         "X-GitHub-Api-Version": "2022-11-28"
                     }
