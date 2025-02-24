@@ -1,0 +1,85 @@
+@import url(fonts/montserrat/index.css);
+@import url(fonts/material-symbols-outlined/index.css);
+
+.textstyling {
+    h4 {
+        margin-block-end: 0;
+    }
+
+    hr {
+        height: 1px;
+        border: none;
+        background-color: #414141;
+    }
+}
+
+html, body {
+    background-color: #2a2a2a;
+    color-scheme: dark;
+    margin: 0;
+}
+
+* {
+    font-family: "Montserrat", "Rethink Sans", sans-serif;
+}
+
+.automargin {
+    margin-left: 25%;
+    margin-right: 25%;
+    transition: all 0.5s ease-in-out;
+}
+
+ul {
+    text-align: start;
+}
+
+div.warning {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid rgb(255 255 0);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    text-align: left;
+
+    .warning-icon {
+        margin-right: 10px;
+        color: rgb(255, 255, 0);
+    }
+}
+
+a:has(md-filled-button) {
+    text-decoration: none !important;
+}
+
+md-filled-button {
+    background: linear-gradient(144deg, var(--btn-color-1) 0%, var(--btn-color-2) 100%);
+    user-select: none;
+    padding: 10px;
+    border-radius: 20px;
+    transition: --btn-color-1 250ms, --btn-color-2 250ms;
+    text-decoration: none !important;
+    cursor: pointer;
+    color: white;
+    display: block;
+}
+
+md-filled-button:hover {
+    --btn-color-1: #831cff;
+    --btn-color-2: #ac13ff;
+    text-decoration: none;
+}
+
+md-filled-button:active {
+    --btn-color-1: #7200fc;
+    --btn-color-2: #9e00f4;
+    text-decoration: none;
+}
+
+md-filled-button:visited {
+    text-decoration: none;
+}
+
+md-filled-button:link {
+    text-decoration: none;
+}

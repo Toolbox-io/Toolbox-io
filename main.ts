@@ -527,11 +527,11 @@ namespace Utils {
             }
         }
 
-        setupGrid()
+        setupGrid();
 
         let rowsNow = getRows(features);
         let columnsNow = getColumns(features);
-        let width = innerWidth
+        let width = innerWidth;
 
         addEventListener("resize", async () => {
             let rows = getRows(features);
@@ -550,7 +550,7 @@ namespace Utils {
                 recalcPlaceholders();
             }
             width = innerWidth;
-        })
+        });
 
         // @ts-ignore
         /* const loading: HTMLElement = document.getElementById("loading") as HTMLElement
@@ -560,5 +560,26 @@ namespace Utils {
         loading.classList.remove("hidden")
         loading.remove()
         await delay(250) */
+
+        try {
+            const token: string = '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';
+            const response: Response = await fetch(
+                "https://api.github.com/repos/Toolbox-io/Toolbox-io/releases/latest",
+                {
+                    method: "GET",
+                    headers: {
+                        "Authorization": `Bearer ${token}`,
+                        "Accept": "application/vnd.github+json",
+                        "X-GitHub-Api-Version": "2022-11-28"
+                    }
+                }
+            );
+            if (response.ok) {
+                const responseJSON: any = await response.json();
+                (
+                    document.getElementById("download_url") as HTMLAnchorElement
+                ).href = responseJSON.assets[0].browser_download_url;
+            }
+        } catch (e) {}
     });
 }

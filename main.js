@@ -498,6 +498,22 @@ var Utils;
         loading.classList.remove("hidden")
         loading.remove()
         await delay(250) */
+        try {
+            const token = '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';
+            const response = await fetch("https://api.github.com/repos/Toolbox-io/Toolbox-io/releases/latest", {
+                method: "GET",
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                    "Accept": "application/vnd.github+json",
+                    "X-GitHub-Api-Version": "2022-11-28"
+                }
+            });
+            if (response.ok) {
+                const responseJSON = await response.json();
+                document.getElementById("download_url").href = responseJSON.assets[0].browser_download_url;
+            }
+        }
+        catch (e) { }
     });
 })(Utils || (Utils = {}));
 export {};

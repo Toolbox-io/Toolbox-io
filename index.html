@@ -8,13 +8,11 @@
         <link rel="icon" href="res/favicon.svg" />
 
         <link rel="stylesheet" href="style.css" />
-
-        <link rel="stylesheet" href="fonts/rethink-sans/index.css">
-        <link rel="stylesheet" href="fonts/material-symbols-outlined/index.css" />
+        <link rel="stylesheet" href="common.css" />
 
         <script src="lib/jquery.js"></script>
         <!--suppress ES6ConvertVarToLetConst, JSUnusedGlobalSymbols -->
-        <script>var exports = {};</script>
+        <script type="module" src="common.js"></script>
         <script type="module" src="main.js"></script>
     </head>
     <body>
@@ -24,32 +22,34 @@
             <div class="separator"></div>
             <div id="tabs">
                 <div class="tab selected" id="home" data-tabindex="0">
-                    Home
+                    Главная
                 </div>
-                <div class="tab" id="download">Download</div>
-                <div class="tab" id="issues" data-tabindex="1">Issues</div>
-                <div class="tab" id="help">Help</div>
+                <div class="tab" id="download">Скачать</div>
+                <div class="tab" id="issues" data-tabindex="1">Проблемы</div>
+                <div class="tab" id="help">Помощь</div>
             </div>
         </div>
         <div class="wrapper">
             <div id="pages" style="left: 0;">
                 <div id="home_page" data-tabindex="0">
                     <div id="main" class="automargin">
-                        <h1 id="headline">All-in-One: Customization & Security</h1>
+                        <h1 id="headline">Все нужное — в одном приложении</h1>
                         <p>
-                            Toolbox.io is a program designed to protect your device from physical intruders.
-                            It blocks access to applications that may pose a security threat.
+                            Toolbox.io — это надежный инструмент, который помогает защитить ваши приложения и данные
+                            на Android от несанкционированного доступа. Он предлагает множество функций, которые делают
+                            вашу жизнь более безопасной и комфортной.
                         </p>
-                        <h2>Features</h2>
+                        <h2>Возможности</h2>
                         <div id="features">
                             <div class="feature" id="applocker">
                                 <div class="feature-header">
                                     <span class="material-symbols-outlined feature-icon">phonelink_lock</span>
-                                    <div class="feature-title">App Locker</div>
+                                    <div class="feature-title">Блокировка приложений</div>
                                     <div class="feature-close material-symbols-outlined">close</div>
                                 </div>
                                 <div class="feature-description">
-                                    Protects your apps from unauthorized access by showing the intruder a fake crash dialog.
+                                    Защищает ваши приложения от несанкционированного доступа, показывая злоумышленнику
+                                    фальшивое сообщение о сбое.
                                 </div>
 
                                 <div class="feature-long-description textcenter">
@@ -57,18 +57,24 @@
                                         <div class="text">
                                             <ul>
                                                 <li>
-                                                    When you try to launch an application protected by AIP++, the device displays an "error" message.
-                                                    In fact, there is no error, this is necessary to confuse the attacker.
+                                                    Когда вы пытаетесь открыть защищённое приложение, оно закроется
+                                                    и вы увидите сообщение об ошибке.
+                                                    На самом деле, никакой ошибки нет, это нужно, чтобы запутать
+                                                    мошенника.
                                                 </li>
-                                                <li>To unlock the app, use the selected method. By default, this is a long press of the "About app" button.</li>
-                                                <li>In AIP++, you can configure different ways to unlock apps to ensure maximum security for your device.</li>
+                                                <li>
+                                                    Чтобы разблокировать приложение, нужно использовать выбранный способ
+                                                    разблокировки. По умолчанию, это долгое нажатие кнопки <b>О
+                                                    приложении</b>. Но Вы всегда можете это изменить через настройки
+                                                    Блокировки приложений.
+                                                </li>
                                             </ul>
                                         </div>
                                         <div id="video_container">
                                             <video autoplay muted loop height="480" width="216" id="demo">
                                                 <source src="res/demo.webm" type="video/webm" />
                                             </video>
-                                            <div class="tip">Click to zoom</div>
+                                            <div class="tip">Нажмите, чтобы увеличить</div>
                                         </div>
                                     </div>
                                     <div id="video_dialog" class="dialog"></div>
@@ -77,62 +83,62 @@
                             <div class="feature" id="unlock_protection">
                                 <div class="feature-header">
                                     <span class="material-symbols-outlined feature-icon">phonelink_lock</span>
-                                    <div class="feature-title">Unlock Protection</div>
+                                    <div class="feature-title">Блокировка экрана</div>
                                     <div class="feature-close material-symbols-outlined">close</div>
                                 </div>
                                 <div class="feature-description">
-                                    Takes actions if someone fails to unlock your phone in 2 attempts.
+                                    Выполняет действия, если кто-то много раз попытался разблокировать ваш телефон.
                                 </div>
 
                                 <div class="feature-long-description">
-                                    <ul class="automargin">
-                                        <li>
-                                            If someone tries to unlock your device, but fails multiple times, the following actions can be taken:
-                                            <h4>Alarm</h4>
-                                            <ul>
-                                                <li>
-                                                    The device will play an alarm sound (you can change it if you want) at 100% volume.
-                                                    Any attempts to change it will be prevented.
-                                                </li>
-                                            </ul>
-                                            <h4>Intruder photo</h4>
-                                            <ul>
-                                                <li>The device will take a photo from the front and back cameras.</li>
-                                                <li>You can configure the camera from which the photos will be taken.</li>
-                                            </ul>
-                                            <p>
-                                                More actions will be added in the future.
-                                            </p>
-                                        </li>
-                                        <li>
-                                            Please note that this feature requires the device admin permission in order to work.
-                                            This is needed to detect failed unlock attempts and take the required actions.
-                                        </li>
-                                        <li>
-                                            This app NEVER uses ANY permissions without your agreement, they are ONLY used for the listed purposes.
-                                        </li>
-                                    </ul>
+                                    <div class="automargin textcenter textstyling">
+                                        <p>
+                                            Если кто-то пытается разблокировать ваше устройство, но у него не получается
+                                            с нескольких попыток, можно выполнить следующие действия:
+                                        </p>
+                                        <h4>Сигнализация</h4>
+                                        <p>
+                                            Устройство возпроизведёт звук сигнализации (при желании его можно
+                                            изменить) на 100% громкости. Любые попытки изменить громкость будут
+                                            предотвращены.
+                                        </p>
+                                        <h4>Фотография злоумышленника</h4>
+                                        <p>
+                                            Устройство сделает снимок злоумышленника с фронтальной камеры.
+                                        </p>
+                                        <hr/>
+                                        <p>
+                                            Обратите внимание, что для работы этой функции требуется разрешение
+                                            администратора устройства.
+                                            Это необходимо для обнаружения неудачных попыток разблокировки и выполнения
+                                            требуемых действий.
+                                        </p>
+                                        <p>
+                                            Это приложение НИКОГДА не использует КАКИЕ-ЛИБО разрешения без вашего
+                                            согласия, они используются ТОЛЬКО для перечисленных целей.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                             <div class="feature" id="tiles">
                                 <div class="feature-header">
                                     <span class="material-symbols-outlined feature-icon">apps</span>
-                                    <div class="feature-title">Tiles</div>
+                                    <div class="feature-title">Плитки</div>
                                     <div class="feature-close material-symbols-outlined">close</div>
                                 </div>
                                 <div class="feature-description">
-                                    Useful tiles for Quick Settings
+                                    Полезные плитки для быстрых настроек
                                 </div>
 
                                 <div class="feature-long-description">
                                     <div class="automargin textcenter">
-                                        Tiles are buttons in the <b><i>Quick Settings</i></b> of your device
-                                        (the menu that you open by swiping down from the top of the screen).
-                                        <h3>Sleep</h3>
-                                        When disabled, disables sleep mode until enabled again.
+                                        Плитки — это кнопки в <b><i>быстрых настройках</i></b> вашего устройства
+                                        (меню, которое открывается свайпом вниз от верхней части экрана).
+                                        <h3>Сон</h3>
+                                        При отключении отключает режим сна до повторного включения.
                                         <div class="warning">
-                                            <span class="material-symbols-outlined warning-icon">warning</span>
-                                            Be careful, because if you forget to enable it, this can cause battery drain.
+                                            <span class="material-symbols-outlined warning-icon">предупреждение</span>
+                                            Будьте осторожны, так как если вы забудете его включить, это может привести к разрядке аккумулятора.
                                         </div>
                                     </div>
                                 </div>
@@ -140,65 +146,70 @@
                             <div class="feature" id="shortcuts">
                                 <div class="feature-header">
                                     <span class="material-symbols-outlined feature-icon">shortcut</span>
-                                    <div class="feature-title">Shortcuts</div>
+                                    <div class="feature-title">Ярлыки</div>
                                     <div class="feature-close material-symbols-outlined">close</div>
                                 </div>
                                 <div class="feature-description">
-                                    Useful shortcuts for hidden apps on your device
+                                    Полезные ярлыки для скрытых приложений на устройстве
                                 </div>
                                 <div class="feature-long-description">
                                     <div class="automargin textcenter">
-                                        This feature will help you to quickly access almost any part of your device
-                                        (such as hidden apps, system settings, or other apps).
-                                        <h3>Files</h3>
-                                        The built-in <b><i>Files</i></b> app is hidden on most devices. But if you want
-                                        to access it, you can do that in this app! Just go to <b>Shortcuts</b> and press
-                                        <b>Add</b> below the <b><i>Files</i></b> button. You can choose how to add the
-                                        shortcut: as a shortcut, but with a watermark, or as a separate app, without the
-                                        watermark.
+                                        Эта функция поможет вам быстро получить доступ практически к любой части вашего устройства
+                                        (например, к скрытым приложениям, системным настройкам или другим приложениям).
+                                        <h3>Файлы</h3>
+                                        Встроенное приложение <b><i>Файлы</i></b> скрыто на большинстве устройств. Но если вы хотите
+                                        получить к нему доступ, вы можете сделать это в этом приложении! Просто перейдите в <b>«Ярлыки»</b> и нажмите
+                                        <b>«Добавить»</b> под кнопкой <b><i>«Файлы»</i></b>. Вы можете выбрать способ добавления ярлыка: как ярлык, но с водяным знаком, или как отдельное приложение без водяного знака.
                                         <div class="center">
                                             <div class="img-bar" id="shortcuts_methods">
-                                                <img src="res/as_a_shortcut.png" alt="As a shortcut" />
-                                                <img src="res/as_a_separate_app.png" alt="As a separate app" />
+                                                <img src="res/as_a_shortcut.png" alt="В качестве ярлыка" />
+                                                <img src="res/as_a_separate_app.png" alt="В качестве отдельного приложения" />
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <h2>Progress</h2>
+                        <h2>Прогресс</h2>
                         <p>
-                            All the progress that I make is in the project on GitHub.
-                            You can check the progress by clicking the button below!
+                            Весь прогресс программы есть в проекте на GitHub.
+                            Вы можете проверить прогресс, нажав на кнопку ниже.
                         </p>
                         <div class="center topmargin">
-                            <a href="https://github.com/users/denis0001-dev/projects/3">
-                                <md-filled-button id="progress_btn">Open the project</md-filled-button>
+                            <a href="https://github.com/orgs/Toolbox-io/projects/1">
+                                <md-filled-button id="progress_btn">Открыть проект</md-filled-button>
                             </a>
                         </div>
 
                         <h2 id="help_h1" class="h1">
+                            <!--suppress HtmlUnknownTag -->
                             <div id="help_h" class="h"></div>
-                            Support
+                            Поддержка
                         </h2>
                         <p>
-                            If you need help, or found a bug, or want to request a new feature, feel free to email me at <a href="mailto:denis0001.dev@ya.ru">denis0001.dev@ya.ru</a>.
-                            Also, you can send an issue on <a href="https://github.com/denis0001-dev/AIP-Website/issues/new">GitHub</a>.
+                            Если вам нужна помощь, вы нашли ошибку или хотите запросить новую функцию, не стесняйтесь
+                            писать мне на <a href="mailto:denis0001.dev@ya.ru">denis0001.dev@ya.ru</a>. Также вы можете
+                            отправить ошибку на
+                            <a href="https://github.com/denis0001-dev/AIP-Website/issues/new">GitHub</a>.
                         </p>
                         <div class="center">
-                            <md-filled-button id="issues_btn">Open issues</md-filled-button>
+                            <md-filled-button id="issues_btn">Открыть проблемы</md-filled-button>
                         </div>
                         <h2 id="download_h1" class="h1">
+                            <!--suppress HtmlUnknownTag -->
                             <div id="download_h" class="h"></div>
-                            Try this app
+                            Попробуйте приложение
                         </h2>
                         <p>
-                            AIP++ is available for Android.
-                            This app is not guaranteed to work on all devices, so if the app behaves unexpectedly, post an issue to GitHub.
+                            Toolbox.io совместим с Android 7 и выше.
+                            Приложение не гарантировано на работу на всех устройтвах, поэтому если видите что-то
+                            неожиданное, отправить отчет об ошибке на GitHub.
                         </p>
                         <div class="center topmargin">
-                            <a href="https://github.com/denis0001-dev/Toolbox-io-Website/releases/latest">
-                                <md-filled-button id="download_btn">Download Toolbox.io</md-filled-button>
+                            <a
+                                href="https://github.com/denis0001-dev/Toolbox-io-Website/releases/latest"
+                                id="download_url">
+                                <md-filled-button id="download_btn">Скачать Toolbox.io</md-filled-button>
                             </a>
                         </div>
                     </div>
@@ -225,10 +236,5 @@
             </div>
         </div>
         <div id="card_dialog" class="dialog"></div>
-        <!--
-        <div id="loading">
-            <div class="appicon icon"></div>
-        </div>
-        -->
     </body>
 </html>
