@@ -22,4 +22,5 @@
     -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
     user-select: none;
+    width: 24px;
 }
