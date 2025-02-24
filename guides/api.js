@@ -1,5 +1,10 @@
 // @ts-ignore
 import { marked } from "../node_modules/marked/lib/marked.esm.js";
+function resizeImages(element) {
+    element.querySelectorAll("p:has(img)").forEach((img) => {
+        img.scrollTop;
+    });
+}
 export async function loadMarkdown(file, element = document.body) {
     if (file === "" || !file.endsWith(".md")) {
         throw new SyntaxError("Invalid file");

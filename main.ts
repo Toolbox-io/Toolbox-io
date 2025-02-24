@@ -552,15 +552,6 @@ namespace Utils {
             width = innerWidth;
         });
 
-        // @ts-ignore
-        /* const loading: HTMLElement = document.getElementById("loading") as HTMLElement
-        loading.classList.add("hidden")
-        document.body.style.transform = ""
-        await delay(250)
-        loading.classList.remove("hidden")
-        loading.remove()
-        await delay(250) */
-
         try {
             const response: Response = await fetch(
                 "https://api.github.com/repos/Toolbox-io/Toolbox-io/releases/latest",
