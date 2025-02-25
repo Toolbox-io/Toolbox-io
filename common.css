@@ -1,16 +1,23 @@
 @import url(fonts/montserrat/index.css);
 @import url(fonts/material-symbols-outlined/index.css);
 
+:root {
+    --hover-color: rgba(110, 110, 110, 0.3);
+    --active-color: rgba(163, 163, 163, 0.3);
+
+    --separator-color: #414141;
+}
+
 .textstyling {
     h4 {
         margin-block-end: 0;
     }
+}
 
-    hr {
-        height: 1px;
-        border: none;
-        background-color: #414141;
-    }
+hr {
+    height: 1px;
+    border: none;
+    background-color: var(--separator-color);
 }
 
 html, body {
@@ -86,29 +93,6 @@ md-filled-button:link {
 
 body.hasHover #tabs .tab:not(.selected):hover {
     color: #3ec322;
-}
-
-#header.top {
-    backdrop-filter: none;
-    border-radius: 0;
-}
-body .wrapper {
-    position: relative;
-    margin-bottom: 20px;
-}
-
-#pages {
-    box-sizing: border-box;
-    width: 100%;
-    position: relative;
-    display: flex;
-
-    > div {
-        width: 100%;
-        flex-shrink: 0;
-        position: relative;
-        transition: opacity 0.5s ease;
-    }
 }
 
 @media (max-width: 1000px) {
@@ -334,10 +318,6 @@ body .wrapper {
     }
 }
 
-body.hasHover #tabs .tab:not(.selected):hover {
-    color: #3ec322;
-}
-
 #header.top {
     backdrop-filter: none;
     border-radius: 0;
@@ -345,4 +325,14 @@ body.hasHover #tabs .tab:not(.selected):hover {
 body .wrapper {
     position: relative;
     margin-bottom: 20px;
+}
+
+#headline {
+    margin-block-start: 0;
+}
+
+#main {
+    text-align: center;
+    color: white;
+    margin-top: 25px;
 }

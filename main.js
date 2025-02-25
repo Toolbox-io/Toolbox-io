@@ -1,5 +1,5 @@
 var switchTab = Utils.switchTab;
-import { Utils } from "./common.js";
+import { Cookies, token, Utils } from "./common.js";
 var doScrolling = Utils.doScrolling;
 var delay = Utils.delay;
 document.addEventListener("DOMContentLoaded", async () => {
@@ -350,17 +350,62 @@ document.addEventListener("DOMContentLoaded", async () => {
         width = innerWidth;
     });
     try {
-        const response = await fetch("https://api.github.com/repos/Toolbox-io/Toolbox-io/releases/latest", {
-            method: "GET",
-            headers: {
+        let currentRatelimitRemaining = Cookies.get("release-ratelimitRemaining");
+        let currentRatelimitReset = Cookies.get("release-ratelimitReset");
+        if (currentRatelimitReset === null) {
+            currentRatelimitReset = (Date.now() + 100).toString();
+        }
+        if (currentRatelimitRemaining === null) {
+            currentRatelimitRemaining = "-1";
+        }
+        let bool = Number(currentRatelimitRemaining) !== 0;
+        if (!bool) {
+            bool = Date.now() > Number(currentRatelimitReset);
+        }
+        if (bool) {
+            const headers = {
                 "Accept": "application/vnd.github+json",
-                "X-GitHub-Api-Version": "2022-11-28"
+                "X-GitHub-Api-Version": "2022-11-28",
+                "Authorization": `Bearer ${token}`
+            };
+            const prevEtag = Cookies.get("release-etag");
+            if (prevEtag !== null) {
+                headers["if-none-match"] = prevEtag;
             }
-        });
-        if (response.ok) {
-            const responseJSON = await response.json();
-            document.getElementById("download_url").href = responseJSON.assets[0].browser_download_url;
+            const response = await fetch("https://api.github.com/repos/Toolbox-io/Toolbox-io/releases/latest", {
+                method: "GET",
+                headers: headers
+            });
+            if (response.ok || response.status === 304) {
+                let downloadUrl;
+                if (response.status === 304) {
+                    console.log("304 Not Modified");
+                    downloadUrl = Cookies.get("release-download_url");
+                }
+                else {
+                    const responseJSON = await response.json();
+                    downloadUrl = responseJSON.assets[0].browser_download_url;
+                }
+                document.getElementById("download_url").href = downloadUrl;
+                const etag = response.headers.get("etag");
+                console.log(etag);
+                if (etag !== null) {
+                    Cookies.set("release-etag", etag);
+                }
+                Cookies.set("release-download_url", downloadUrl);
+            }
+            const ratelimitRemaining = response.headers.get("X-Ratelimit-Remaining");
+            const ratelimitReset = response.headers.get("X-Ratelimit-Reset");
+            Cookies.set("release-ratelimitRemaining", ratelimitRemaining);
+            Cookies.set("release-ratelimitReset", ratelimitReset);
+            console.log(`Rate limit remaining: ${ratelimitRemaining}`);
+            console.log(`Rate limit reset: ${ratelimitReset}`);
+        }
+        else {
+            console.warn(`Rate limit exceeded, it will be reset at ${Cookies.get("release-ratelimitReset")}`);
         }
     }
-    catch (e) { }
+    catch (e) {
+        console.log(e);
+    }
 });
