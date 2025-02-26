@@ -37,7 +37,7 @@ Icon: lock
    следующем экране.
    
    <img
-   src="../res/guides/how_to_use_unlock_protection/unlock_protection.png"
+   src="../res/guides/how_to_use_unlock_protection/devadmin.png"
    alt="Экран Блокировки экрана"
    width="293,8"
    height="620,8"

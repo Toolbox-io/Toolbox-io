@@ -28,10 +28,11 @@
 
     p:has(img) {
         display: flex;
-        width: 100%;
         user-select: none;
         border-radius: 0;
         align-items: center;
+        justify-content: center;
+        width: max-content;
         position: relative;
 
         img {
