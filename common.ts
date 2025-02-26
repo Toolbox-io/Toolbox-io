@@ -137,7 +137,9 @@ export namespace Cookies {
     }
 }
 
-export function getMarkdownHeader(markdown: string): { [key: string]: string } {
+export type MarkdownHeader = { [key: string]: string }
+
+export function getMarkdownHeader(markdown: string): MarkdownHeader {
     const headerRegex = /---\n((?:[^:\n]+:[^:\n]+\n)+)---/;
     const match = markdown.match(headerRegex);
 

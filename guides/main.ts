@@ -1,20 +1,7 @@
 import {Cookies, getMarkdownHeader, token, Utils} from "../common.js";
 import switchTab = Utils.switchTab;
 import delay = Utils.delay;
-import {loadMarkdown} from "./api.js";
-
-type GuideHeader = {
-    "DisplayName": string,
-    "Icon": string
-}
-
-type GuideJSON = GuideEntry[]
-
-type GuideEntry = {
-    type: "file" | "dir",
-    name: string,
-    download_url: string
-}
+import {GuideHeader, GuideJSON, loadMarkdown} from "./api.js";
 
 let _currentPage: 0 | 1 = 0;
 

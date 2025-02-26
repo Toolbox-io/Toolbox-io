@@ -1,5 +1,6 @@
 // @ts-ignore
 import { marked } from "../node_modules/marked/lib/marked.esm.js";
+import { getMarkdownHeader } from "../common.js";
 export async function loadMarkdown(file, element = document.body) {
     if (file === "" || !file.endsWith(".md")) {
         throw new SyntaxError("Invalid file");
@@ -8,6 +9,7 @@ export async function loadMarkdown(file, element = document.body) {
     text = text.replace(/---(.|\n)*?---/g, '');
     text = text.replace(/^([\t ]*)> \[!(IMPORTANT|TIP|NOTE|WARNING)]\n((\s*>.*)*)/gm, `$1> [!$2]\n$1>\n$3`);
     element.innerHTML = await marked.parse(text);
+    // apply styles
     element.querySelectorAll("blockquote > p:first-child").forEach((element) => {
         const match = element.innerHTML.match(/^\[!(IMPORTANT|TIP|WARNING|NOTE)]$/);
         if (match != null) {
@@ -48,5 +50,6 @@ export async function loadMarkdown(file, element = document.body) {
             element.classList.add("loaded");
         });
     });
+    return getMarkdownHeader(text);
 }
 window.loadMarkdown = loadMarkdown;

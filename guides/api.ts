@@ -1,7 +1,21 @@
 // @ts-ignore
 import { marked } from "../node_modules/marked/lib/marked.esm.js"
+import {getMarkdownHeader} from "../common.js";
 
-export async function loadMarkdown(file: string, element: HTMLElement = document.body) {
+export type GuideHeader = {
+    "DisplayName": string,
+    "Icon": string
+}
+
+export type GuideJSON = GuideEntry[]
+
+export type GuideEntry = {
+    type: "file" | "dir",
+    name: string,
+    download_url: string
+}
+
+export async function loadMarkdown(file: string, element: HTMLElement = document.body): Promise<GuideHeader> {
     if (file === "" || !file.endsWith(".md")) {
         throw new SyntaxError("Invalid file")
     }
@@ -14,6 +28,7 @@ export async function loadMarkdown(file: string, element: HTMLElement = document
     )
     element.innerHTML = await marked.parse(text);
 
+    // apply styles
     element.querySelectorAll("blockquote > p:first-child").forEach(
         (element: Element) => {
             const match: null | RegExpMatchArray = element.innerHTML.match(/^\[!(IMPORTANT|TIP|WARNING|NOTE)]$/);
@@ -56,6 +71,8 @@ export async function loadMarkdown(file: string, element: HTMLElement = document
             });
         }
     );
+
+    return getMarkdownHeader(text) as GuideHeader
 }
 
 (window as any).loadMarkdown = loadMarkdown;
