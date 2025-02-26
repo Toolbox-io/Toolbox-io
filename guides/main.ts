@@ -70,8 +70,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const guides = document.getElementById("guides_list") as HTMLDivElement;
 
-    document.getElementById("guide_back")!!.addEventListener("click", () => {
-        switchPage(0);
+    document.getElementById("guide_back")!!.addEventListener("click", async () => {
+        await switchPage(0);
+        document.getElementById("guide")!!.innerHTML = "";
     });
 
     let currentRatelimitRemaining = Cookies.get("guides-ratelimitRemaining");
