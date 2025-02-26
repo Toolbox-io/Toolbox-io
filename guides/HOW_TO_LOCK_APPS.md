@@ -9,7 +9,7 @@ Icon: phonelink_lock
 При попытке открыть любое защищённое приложение, потенциальный мошенник увидит фальшивое сообщение о сбое:
 
 <img 
-  src="https://github.com/user-attachments/assets/8b462a6c-fc1e-47db-a772-f311ee368d0f" 
+  src="../res/guides/how_to_lock_apps/crash.png" 
   alt="Фальшивое сообщение о сбое"
   width="293,8"
   height="620,8"
@@ -25,7 +25,7 @@ Icon: phonelink_lock
 Дальше нужно ввести пароль для входа в приложение:
 
 <img
-  src="https://github.com/user-attachments/assets/130103ad-d374-4460-af9c-cf97c1eceb6f"
+  src="../res/guides/how_to_lock_apps/password.png"
   alt="Экран ввода пароля"
   width="293,8"
   height="620,8"
@@ -47,7 +47,7 @@ Icon: phonelink_lock
 > Чтобы отключить постоянное уведомление, нажмите и удерживайте его, а затем нажмите **Выключить уведомления**:
 > 
 > <img
->   src="https://github.com/user-attachments/assets/358d8e83-1c26-46ff-b2b5-25719e77d3de"
+>   src="../res/guides/how_to_lock_apps/notification.png"
 >   alt="Выключение постоянного уведомления"
 >   width="293,8"
 >   height="620,8"
@@ -57,7 +57,7 @@ Icon: phonelink_lock
 1. Зайдите в Toolbox.io и перейдите в раздел [**Блокировка приложений**](toolbox-io://page/applocker).
    
    <img
-     src="https://github.com/user-attachments/assets/a8dbeed5-3402-48c8-9c01-8ecf215365b5"
+     src="../res/guides/how_to_lock_apps/applocker.png"
      alt="Экран Блокировки приложений"
      width="293,8"
      height="620,8"
@@ -66,13 +66,13 @@ Icon: phonelink_lock
 3. Предоставьте разрешение спец. возможностей:
    
    <img
-     src="https://github.com/user-attachments/assets/4f833de5-8451-4964-8c31-b023aa43d998"
+     src="../res/guides/how_to_lock_apps/accessibility_1.png"
      alt="Предоставление разрешения специальных возможностей"
      width="293,8"
      height="620,8"
      class="phone" />
    <img
-     src="https://github.com/user-attachments/assets/274ca8cc-6be7-4e6a-b442-4b7bc49f673b"
+     src="../res/guides/how_to_lock_apps/accessibility_2.png"
      alt="Предоставление разрешения специальных возможностей"
      width="293,8"
      height="620,8"
@@ -81,7 +81,7 @@ Icon: phonelink_lock
 5. Выберите приложения, которые нужно защитить через пункт **Приложения** на странице Блокировки приложений:
    
    <img
-     src="https://github.com/user-attachments/assets/2a125a3f-aa84-4c3c-9756-722d8646b3b3"
+     src="../res/guides/how_to_lock_apps/select_apps.png"
      alt="Экран выбора приложений"
      width="293,8"
      height="620,8"
