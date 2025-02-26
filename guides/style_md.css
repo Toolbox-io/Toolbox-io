@@ -89,11 +89,11 @@
         p:has(img.phone:not(:only-child)) {
             flex-direction: column;
 
-            img {
+            > img {
                 margin-bottom: 10px;
             }
 
-            img:last-child {
+            > img:last-child {
                 margin-bottom: 0;
             }
         }
@@ -115,7 +115,7 @@
     blockquote:has(p.tip:first-child) {
         border-left-color: var(--tip-color);
 
-        p.tip:first-child {
+        > p.tip:first-child {
             color: var(--tip-color);
         }
     }
@@ -123,7 +123,7 @@
     blockquote:has(p.important:first-child) {
         border-left-color: var(--important-color);
 
-        p.important:first-child {
+        > p.important:first-child {
             color: var(--important-color);
         }
     }
@@ -131,7 +131,7 @@
     blockquote:has(p.warning:first-child) {
         border-left-color: var(--warning-color);
 
-        p.warning:first-child {
+        > p.warning:first-child {
             color: var(--warning-color);
         }
     }
@@ -139,8 +139,12 @@
     blockquote:has(p.note:first-child) {
         border-left-color: var(--note-color);
 
-        p.note:first-child {
+        > p.note:first-child {
             color: var(--note-color);
         }
+    }
+
+    ul > li:not(:last-child) {
+        margin-bottom: 10px;
     }
 }
