@@ -8,6 +8,14 @@ type GuideHeader = {
     "Icon": string
 }
 
+type GuideJSON = GuideEntry[]
+
+type GuideEntry = {
+    type: "file" | "dir",
+    name: string,
+    download_url: string
+}
+
 let _currentPage: 0 | 1 = 0;
 
 function sizeElements() {
@@ -98,7 +106,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             "Accept": "application/json",
             "X-GitHub-Api-Version": "2022-11-28",
             "Authorization": `Bearer ${token}`
-        }
+        };
 
         let cookiedJSON = Cookies.get("guides-json");
 
@@ -112,9 +120,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             {
                 headers: headers
             }
-        )
+        );
         if (response.ok || response.status === 304) {
-            let responseJSON: any;
+            let responseJSON: GuideJSON;
             if (cookiedJSON != null && response.status === 304) {
                 responseJSON = JSON.parse(cookiedJSON);
                 console.log("Using cached guides");
@@ -122,13 +130,20 @@ document.addEventListener("DOMContentLoaded", async () => {
                 console.log("Getting new data");
                 responseJSON = await response.json();
             }
+
+            let savedJSON: GuideJSON = []
+
             for (const entry of responseJSON) {
-                if (entry["type"] === "file" && entry["name"].endsWith(".md") && entry["name"] !== "README.md") {
+                const type = entry.type;
+                const name = entry.name;
+                const download_url = entry.download_url;
+
+                if (type === "file" && name.endsWith(".md") && name !== "README.md") {
                     try {
-                        const guide_content = await (await fetch(entry["download_url"])).text();
+                        const guide_content = await (await fetch(download_url)).text();
                         const guide_header = getMarkdownHeader(guide_content) as GuideHeader;
                         const guide = document.createElement("div");
-                        guide.classList.add("guide");
+                        guide.classList.add("guide", "toucheffect");
 
                         const icon = document.createElement("span");
                         icon.classList.add("material-symbols-outlined", "guide_icon");
@@ -146,15 +161,26 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         guides.appendChild(guide);
                         guide.addEventListener("click", () => {
-                            loadMarkdown(entry["name"], document.getElementById("guide")!!);
+                            loadMarkdown(name, document.getElementById("guide")!!);
                             switchPage(1);
                         });
                     } catch (e) {
                         console.log(e);
                     }
+
+                    savedJSON.push(
+                        {
+                            name: name,
+                            type: type,
+                            download_url: download_url
+                        }
+                    );
                 }
             }
-            Cookies.set("guides-json", JSON.stringify(responseJSON));
+
+            console.log(savedJSON);
+
+            Cookies.set("guides-json", JSON.stringify(savedJSON));
             const etag = response.headers.get("etag");
             if (etag !== null) {
                 Cookies.set("guides-etag", etag);
@@ -170,7 +196,13 @@ document.addEventListener("DOMContentLoaded", async () => {
             console.error(`Failed to fetch guides: ${response.status} - ${response.statusText}`);
         }
 
-        Cookies.set("guides-ratelimitRemaining", response.headers.get("x-ratelimit-remaining")!!);
-        Cookies.set("guides-ratelimitReset", response.headers.get("x-ratelimit-reset")!!);
+        const ratelimitRemaining = response.headers.get("x-ratelimit-remaining")!!;
+        const ratelimitReset = response.headers.get("x-ratelimit-reset")!!;
+
+        console.log(`Rate limit remaining: ${ratelimitRemaining}`);
+        console.log(`reset: ${ratelimitReset}`);
+
+        Cookies.set("guides-ratelimitRemaining", ratelimitRemaining);
+        Cookies.set("guides-ratelimitReset", ratelimitReset);
     }
 })

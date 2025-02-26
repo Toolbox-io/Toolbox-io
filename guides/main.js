@@ -96,13 +96,17 @@ document.addEventListener("DOMContentLoaded", async () => {
                 console.log("Getting new data");
                 responseJSON = await response.json();
             }
+            let savedJSON = [];
             for (const entry of responseJSON) {
-                if (entry["type"] === "file" && entry["name"].endsWith(".md") && entry["name"] !== "README.md") {
+                const type = entry.type;
+                const name = entry.name;
+                const download_url = entry.download_url;
+                if (type === "file" && name.endsWith(".md") && name !== "README.md") {
                     try {
-                        const guide_content = await (await fetch(entry["download_url"])).text();
+                        const guide_content = await (await fetch(download_url)).text();
                         const guide_header = getMarkdownHeader(guide_content);
                         const guide = document.createElement("div");
-                        guide.classList.add("guide");
+                        guide.classList.add("guide", "toucheffect");
                         const icon = document.createElement("span");
                         icon.classList.add("material-symbols-outlined", "guide_icon");
                         if (guide_header.Icon) {
@@ -118,16 +122,22 @@ document.addEventListener("DOMContentLoaded", async () => {
                         guide.appendChild(title);
                         guides.appendChild(guide);
                         guide.addEventListener("click", () => {
-                            loadMarkdown(entry["name"], document.getElementById("guide"));
+                            loadMarkdown(name, document.getElementById("guide"));
                             switchPage(1);
                         });
                     }
                     catch (e) {
                         console.log(e);
                     }
+                    savedJSON.push({
+                        name: name,
+                        type: type,
+                        download_url: download_url
+                    });
                 }
             }
-            Cookies.set("guides-json", JSON.stringify(responseJSON));
+            console.log(savedJSON);
+            Cookies.set("guides-json", JSON.stringify(savedJSON));
             const etag = response.headers.get("etag");
             if (etag !== null) {
                 Cookies.set("guides-etag", etag);
@@ -142,7 +152,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         else {
             console.error(`Failed to fetch guides: ${response.status} - ${response.statusText}`);
         }
-        Cookies.set("guides-ratelimitRemaining", response.headers.get("x-ratelimit-remaining"));
-        Cookies.set("guides-ratelimitReset", response.headers.get("x-ratelimit-reset"));
+        const ratelimitRemaining = response.headers.get("x-ratelimit-remaining");
+        const ratelimitReset = response.headers.get("x-ratelimit-reset");
+        console.log(`Rate limit remaining: ${ratelimitRemaining}`);
+        console.log(`reset: ${ratelimitReset}`);
+        Cookies.set("guides-ratelimitRemaining", ratelimitRemaining);
+        Cookies.set("guides-ratelimitReset", ratelimitReset);
     }
 });

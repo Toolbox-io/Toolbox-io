@@ -336,3 +336,15 @@ body .wrapper {
     color: white;
     margin-top: 25px;
 }
+
+.toucheffect {
+    transition: background-color 0.25s ease;
+}
+
+body.hasHover .toucheffect:hover {
+    background-color: var(--hover-color);
+}
+
+.toucheffect:active {
+    background-color: var(--active-color);
+}
