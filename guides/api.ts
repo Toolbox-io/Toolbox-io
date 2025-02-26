@@ -51,6 +51,9 @@ export async function loadMarkdown(file: string, element: HTMLElement = document
     element.querySelectorAll("img").forEach(
         (element: HTMLImageElement) => {
             element.loading = "lazy";
+            element.addEventListener("load", () => {
+                element.classList.add("loaded");
+            });
         }
     );
 }

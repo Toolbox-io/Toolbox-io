@@ -3,6 +3,17 @@
     --important-color: rgb(157 64 255);
     --warning-color: rgb(246, 255, 0);
     --note-color: rgb(0, 161, 255);
+    --spinner-thickness: 5px;
+    --spinner-color: #fffaf0;
+}
+
+@keyframes rotate {
+    0% {
+        rotate: 0;
+    }
+    100% {
+        rotate: 360deg;
+    }
 }
 
 .markdown {
@@ -18,11 +29,60 @@
     p:has(img) {
         display: flex;
         width: 100%;
+        justify-content: center;
+        user-select: none;
+        border-radius: 0;
+        align-items: center;
+        position: relative;
+
         img {
             margin-left: 10px;
             margin-right: 10px;
         }
-        justify-content: center;
+    }
+
+    p:has(img)::after {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        width: calc(100% + 2px);
+        height: calc(100% + 2px);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        opacity: 1;
+    }
+
+    p:has(img)::before {
+        content: '';
+        width: 70px;
+        height: 70px;
+        border-left: var(--spinner-thickness) solid var(--spinner-color);
+        border-top: var(--spinner-thickness) solid var(--spinner-color);
+        border-right: var(--spinner-thickness) solid transparent;
+        border-bottom: var(--spinner-thickness) solid transparent;
+        border-radius: 50%;
+        z-index: 100;
+        position: absolute;
+        animation: rotate 1s ease;
+        animation-iteration-count: infinite;
+        opacity: 1;
+    }
+
+    p:has(img) {
+        border-radius: 20px;
+    }
+
+    p:not(:has(img:not(.loaded)))::before {
+        opacity: 0;
+    }
+
+    p:not(:has(img:not(.loaded)))::after {
+        opacity: 0;
+    }
+
+    p:not(:has(img:not(.loaded))) {
+        border-radius: 0;
     }
 
     @media (max-width: 729px) {

@@ -44,6 +44,9 @@ export async function loadMarkdown(file, element = document.body) {
     });
     element.querySelectorAll("img").forEach((element) => {
         element.loading = "lazy";
+        element.addEventListener("load", () => {
+            element.classList.add("loaded");
+        });
     });
 }
 window.loadMarkdown = loadMarkdown;
