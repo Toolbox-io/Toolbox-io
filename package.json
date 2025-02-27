@@ -11,7 +11,7 @@
     "@material/web": "^2.2.0",
     "@octokit/core": "^6.1.4",
     "@octokit/plugin-rest-endpoint-methods": "^13.3.1",
-    "@octokit/rest": "^21.0.2",
+    "@octokit/rest": "^21.1.1",
     "@octokit/types": "^13.6.1",
     "@popmotion/easing": "^1.0.2",
     "animate-css-grid": "^1.5.1",
