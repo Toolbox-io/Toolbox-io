@@ -6,6 +6,7 @@ export async function loadMarkdown(file, element = document.body) {
         throw new SyntaxError("Invalid file");
     }
     let text = await (await fetch(file)).text();
+    const header = getMarkdownHeader(text);
     text = text.replace(/---(.|\n)*?---/g, '');
     text = text.replace(/^([\t ]*)> \[!(IMPORTANT|TIP|NOTE|WARNING)]\n((\s*>.*)*)/gm, `$1> [!$2]\n$1>\n$3`);
     element.innerHTML = await marked.parse(text);
@@ -50,6 +51,6 @@ export async function loadMarkdown(file, element = document.body) {
             element.classList.add("loaded");
         });
     });
-    return getMarkdownHeader(text);
+    return header;
 }
 window.loadMarkdown = loadMarkdown;

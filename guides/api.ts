@@ -21,6 +21,7 @@ export async function loadMarkdown(file: string, element: HTMLElement = document
     }
 
     let text = await (await fetch(file)).text();
+    const header = getMarkdownHeader(text) as GuideHeader
     text = text.replace(/---(.|\n)*?---/g, '');
     text = text.replace(
         /^([\t ]*)> \[!(IMPORTANT|TIP|NOTE|WARNING)]\n((\s*>.*)*)/gm,
@@ -72,7 +73,7 @@ export async function loadMarkdown(file: string, element: HTMLElement = document
         }
     );
 
-    return getMarkdownHeader(text) as GuideHeader
+    return header
 }
 
 (window as any).loadMarkdown = loadMarkdown;
