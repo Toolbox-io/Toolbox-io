@@ -9,15 +9,6 @@ body:
     attributes:
       value: |
         _Спасибо, что помогаете Toolbox.io стать лучше!_
-  - type: checkboxes
-    attributes:
-      label: Is there an existing issue for this?
-      description: Please search to see if an issue already exists for the bug you encountered.
-      options:
-        - label: I have searched the existing issues
-          required: true
-        - label: test
-          required: true
   - type: textarea
     id: what-happened
     attributes:
@@ -34,3 +25,18 @@ body:
       placeholder: "Сделать так, чтобы ..."
     validations:
       required: true
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: "Скриншоты"
+      description: "Приложите скриншоты, если возможно."
+    validations:
+      required: false
+  - type: checkboxes
+    attributes:
+      label: "Правила сообщества"
+      description: |
+        Вы принимаете [правила сообщества](https://github.com/Toolbox-io/Toolbox-io/)?
+      options:
+        - label: "Я принимаю правила сообщества"
+          required: true
