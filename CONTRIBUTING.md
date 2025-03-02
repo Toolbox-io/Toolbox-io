@@ -7,10 +7,8 @@
 ### Инструкция
 1. [Создайте новую проблему](https://github.com/denis0001-dev/Toolbox-io/issues/new/choose).
 2. Используйте один из шаблонов:
-   - [**Проблема в приложении**](https://github.com/denis0001-dev/Toolbox-io/issues/new?template=проблема-в-приложении.md) - для проблем, связанных с самим приложением
-   - [**Проблема в сайте**](https://github.com/denis0001-dev/Toolbox-io/issues/new?template=проблема-в-сайте.md) - для проблем, связанных с сайтом
-
-   Если ни один не подходит, [используйте пустой шаблон проблемы](https://github.com/denis0001-dev/Toolbox-io/issues/new?template=Blank+issue)
+   - [**Проблема в приложении**](https://github.com/denis0001-dev/Toolbox-io/issues/new?template=проблема-в-приложении.yaml) - для проблем, связанных с самим приложением
+   - [**Проблема в сайте**](https://github.com/denis0001-dev/Toolbox-io/issues/new?template=проблема-в-сайте.yaml) - для проблем, связанных с сайтом
 3. Заполните все необходимые поля.
 4. По возможности прикрепите скриншоты и другую полезную информацию для более быстрого устранения ошибки.
 5. Нажмите **Create**.
@@ -25,10 +23,8 @@
 1. [Создайте новую проблему](https://github.com/denis0001-dev/Toolbox-io/issues/new/choose).
 2. Заполните все необходимые поля.
 3. Используйте один из шаблонов:
-   - [**Предложение для приложения**](https://github.com/denis0001-dev/Toolbox-io/issues/new?template=предложение-для-приложения.md) - для проблем, связанных с самим приложением
-   - [**Проблема в сайте**](https://github.com/denis0001-dev/Toolbox-io/issues/new?template=предложение-для-сайта.md) - для проблем, связанных с сайтом
-
-   Если ни один не подходит, [используйте пустой шаблон проблемы](https://github.com/denis0001-dev/Toolbox-io/issues/new?template=Blank+issue)
+   - [**Предложение для приложения**](https://github.com/denis0001-dev/Toolbox-io/issues/new?template=предложение-для-приложения.yaml) - для проблем, связанных с самим приложением
+   - [**Проблема в сайте**](https://github.com/denis0001-dev/Toolbox-io/issues/new?template=предложение-для-сайта.yaml) - для проблем, связанных с сайтом
 4. По возможности прикрепите скриншоты и другую полезную информацию.
 5. Нажмите **Create**.
 ### Если хотите добавить новую функцию, и вы сами написали код
