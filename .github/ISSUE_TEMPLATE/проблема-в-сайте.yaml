@@ -1,6 +1,6 @@
-name: "Проблема в приложении"
-description: "Сообщить об ошибке в приложении"
-labels: ["приложение", "баг"]
+name: "Проблема в сайте"
+description: "Сообщить об ошибке в сайте"
+labels: ["сайт", "баг"]
 projects: ["Toolbox-io/1"]
 assignees:
   - denis0001-dev
