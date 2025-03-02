@@ -4,6 +4,7 @@ labels: ["сайт", "улучшение"]
 projects: ["Toolbox-io/1"]
 assignees:
   - denis0001-dev
+type: "Feature"
 body:
   - type: markdown
     attributes:
