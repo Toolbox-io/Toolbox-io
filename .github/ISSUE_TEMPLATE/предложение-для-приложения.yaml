@@ -17,7 +17,7 @@ body:
       placeholder: "Меня очень раздражает, когда ..."
     validations:
       required: false
-- type: textarea
+  - type: textarea
     id: solution
     attributes:
       label: "Решение"
