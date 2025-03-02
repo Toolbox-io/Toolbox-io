@@ -4,6 +4,7 @@ labels: ["приложение", "баг"]
 projects: ["Toolbox-io/1"]
 assignees:
   - denis0001-dev
+type: "Bug"
 body:
   - type: markdown
     attributes:
