@@ -1,5 +1,5 @@
-name: Предложение для приложения
-description: Предложить идею или новую функцию для приложения
+name: "Предложение для приложения"
+description: "Предложить идею или новую функцию для приложения"
 labels: ["приложение", "улучшение"]
 projects: ["Toolbox-io/1"]
 assignees:
@@ -12,16 +12,16 @@ body:
   - type: textarea
     id: what-happened
     attributes:
-      label: Ваше предложение связано с проблемой? 
-      description: Если да, то пожалуйста опишите проблему.
-      placeholder: Меня очень раздражает, когда ...
+      label: "Ваше предложение связано с проблемой?"
+      description: "Если да, то пожалуйста опишите проблему."
+      placeholder: "Меня очень раздражает, когда ..."
     validations:
       required: false
 - type: textarea
     id: solution
     attributes:
-      label: Решение
-      description: Что Вы хотите предложить?
-      placeholder: Сделать так, чтобы ...
+      label: "Решение"
+      description: "Что Вы хотите предложить?"
+      placeholder: "Сделать так, чтобы ..."
     validations:
       required: true
