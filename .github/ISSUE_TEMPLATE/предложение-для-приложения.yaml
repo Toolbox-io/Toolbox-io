@@ -1,6 +1,5 @@
 name: Предложение для приложения
 description: Предложить идею или новую функцию для приложения
-title: ""
 labels: ["приложение", "улучшение"]
 projects: ["Toolbox-io/1"]
 assignees:
