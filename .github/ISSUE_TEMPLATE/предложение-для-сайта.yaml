@@ -1,6 +1,6 @@
 name: "Предложение для сайта"
 description: "Предложить идею или новую функцию для сайта"
-labels: ["приложение", "улучшение"]
+labels: ["сайт", "улучшение"]
 projects: ["Toolbox-io/1"]
 assignees:
   - denis0001-dev
