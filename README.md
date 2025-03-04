@@ -1,4 +1,23 @@
-### Toolbox.io: все нужное — в одном приложении
+<h1 align="center">Toolbox.io</h1>
+<p align="center"><b>Все нужное — в одном приложении</b></p>
+<p align="center">
+ <a href="LICENSE">
+  <img alt="Лицензия" src="https://img.shields.io/github/license/Toolbox-io/Toolbox-io?label=%D0%BB%D0%B8%D1%86%D0%B5%D0%BD%D0%B7%D0%B8%D1%8F">
+ </a>
+ <a href="https://toolbox-io.ru">
+  <img alt="Сайт" src="https://img.shields.io/website?url=https%3A%2F%2Ftoolbox-io.ru&up_message=%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D0%B5%D1%82&down_message=%D0%BD%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D0%B5%D1%82&label=%D1%81%D0%B0%D0%B9%D1%82">
+ </a>
+ <a href="https://github.com/Toolbox-io/Toolbox-io/issues">
+  <img alt="Проблемы" src="https://img.shields.io/github/issues/Toolbox-io/Toolbox-io?label=%D0%BF%D1%80%D0%BE%D0%B1%D0%BB%D0%B5%D0%BC%D1%8B">
+ </a>
+ <img alt="Скачивания" src="https://img.shields.io/github/downloads/Toolbox-io/Toolbox-io/total?label=%D1%81%D0%BA%D0%B0%D1%87%D0%B8%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F">
+ <a href="https://github.com/Toolbox-io/Toolbox-io/deployments">
+  <img alt="Сборка" src="https://img.shields.io/github/deployments/Toolbox-io/Toolbox-io/github-pages?label=%D1%81%D0%B1%D0%BE%D1%80%D0%BA%D0%B0">
+ </a>
+ <a href="https://github.com/Toolbox-io/Toolbox-io/releases/latest">
+  <img alt="Последняя версия" src="https://img.shields.io/github/v/release/Toolbox-io/Toolbox-io?label=%D0%BF%D0%BE%D1%81%D0%BB%D0%B5%D0%B4%D0%BD%D1%8F%D1%8F%20%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%8F">
+ </a>
+</p>
 Toolbox.io — это надежный инструмент, который помогает защитить ваши приложения и данные на Android
 от несанкционированного доступа. Он предлагает множество функций, которые делают вашу жизнь 
 более безопасной и комфортной.
