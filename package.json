@@ -12,7 +12,7 @@
     "@octokit/core": "^6.1.4",
     "@octokit/plugin-rest-endpoint-methods": "^13.3.1",
     "@octokit/rest": "^21.1.1",
-    "@octokit/types": "^13.6.1",
+    "@octokit/types": "^13.10.0",
     "@popmotion/easing": "^1.0.2",
     "animate-css-grid": "^1.5.1",
     "framesync": "^6.1.2",
