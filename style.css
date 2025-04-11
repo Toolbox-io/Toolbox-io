@@ -78,10 +78,6 @@
             }
         }
 
-        .feature:not(.noHover):hover {
-            transform: translateY(5px);
-        }
-
         .feature.transition {
             transition: all 0.5s ease-in-out;
         }
@@ -110,6 +106,7 @@
                         .tip {
                             color: #7e7e7e;
                             margin-left: 10px;
+                            margin-top: 5px;
                         }
                     }
                 }
@@ -141,6 +138,10 @@
     .h1 {
         position: relative;
     }
+}
+
+body.hasHover #main #features .feature:not(.noHover):hover {
+    transform: translateY(5px);
 }
 
 #video_dialog {

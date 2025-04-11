@@ -48,19 +48,20 @@ export var Utils;
     }
     Utils.delay = delay;
     async function switchTab(tab) {
-        if (tab === 0) {
-            open(location.origin, "_self");
-        }
-        else if (tab === 1) {
-            open("https://github.com/Toolbox-io/Toolbox-io/issues", "_self");
-            return;
-        }
-        else if (tab === 2) {
-            open(`${location.origin}/guides`, "_self");
+        switch (tab) {
+            case 0:
+                open(location.origin, "_self");
+                break;
+            case 1:
+                open("https://github.com/Toolbox-io/Toolbox-io/issues", "_self");
+                break;
+            case 2:
+                open(`${location.origin}/guides`, "_self");
+                break;
         }
     }
     Utils.switchTab = switchTab;
-    async function notification(type, _headline, _message, durationSec) {
+    async function notification(type, _headline, _message, durationSec = 5) {
         const status = document.getElementById("status");
         const progress = status.querySelector(".progress > .progress_bar");
         const headline = status.querySelector(".head > .message_headline");
@@ -70,7 +71,7 @@ export var Utils;
         status.classList.add(type);
         headline.textContent = _headline;
         message.textContent = _message;
-        progress.style.transitionDuration = `${durationSec || 5}s`;
+        progress.style.transitionDuration = `${durationSec}s`;
         progress.style.width = "100%";
         close.addEventListener("click", hide);
         async function hide() {
@@ -86,7 +87,6 @@ export var Utils;
         await hide();
     }
     Utils.notification = notification;
-    window.notify = notification;
 })(Utils || (Utils = {}));
 // noinspection JSUnusedGlobalSymbols
 export var Cookies;
