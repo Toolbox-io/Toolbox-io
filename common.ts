@@ -1,4 +1,5 @@
-console.log("Common file loading...")
+// noinspection JSUnusedLocalSymbols,ES6ConvertVarToLetConst,JSUnusedGlobalSymbols
+export var exports = {};
 
 export const token = "gi" + "thu" + "b_p" + "at_11BPW3Z" + "7Y0M847x0i" + "90jER_DKs" +
     "vP8tQQwkRCvQd" + "0MCf7hc5" + "K9QVvtF" + "8eoI5eM9Drg" + "oVWG5FHXPIsg4HeMh"
@@ -159,40 +160,39 @@ export function getMarkdownHeader(markdown: string): MarkdownHeader {
     return properties;
 }
 
-// noinspection JSUnusedLocalSymbols,ES6ConvertVarToLetConst,JSUnusedGlobalSymbols
-export var exports = {};
-
 // hover fix
-let hasHoverClass = false;
-const container = document.body;
-let lastTouchTime = 0;
+(() => {
+    let hasHoverClass = false;
+    const container = document.body;
+    let lastTouchTime = 0;
 
-function enableHover() {
-    // filter emulated events coming from touch events
-    // @ts-ignore
-    if (new Date() - lastTouchTime < 500) return;
-    if (hasHoverClass) return;
+    function enableHover() {
+        // filter emulated events coming from touch events
+        // @ts-ignore
+        if (new Date() - lastTouchTime < 500) return;
+        if (hasHoverClass) return;
 
-    container.className += ' hasHover';
-    hasHoverClass = true;
-}
+        container.className += ' hasHover';
+        hasHoverClass = true;
+    }
 
-function disableHover() {
-    if (!hasHoverClass) return;
+    function disableHover() {
+        if (!hasHoverClass) return;
 
-    container.className = container.className.replace(' hasHover', '');
-    hasHoverClass = false;
-}
+        container.className = container.className.replace(' hasHover', '');
+        hasHoverClass = false;
+    }
 
-function updateLastTouchTime() {
-    // @ts-ignore
-    lastTouchTime = new Date();
-}
+    function updateLastTouchTime() {
+        // @ts-ignore
+        lastTouchTime = new Date();
+    }
 
-document.addEventListener('touchstart', updateLastTouchTime, true);
-document.addEventListener('touchstart', disableHover, true);
-document.addEventListener('mousemove', enableHover, true);
-enableHover();
+    document.addEventListener('touchstart', updateLastTouchTime, true);
+    document.addEventListener('touchstart', disableHover, true);
+    document.addEventListener('mousemove', enableHover, true);
+    enableHover();
+})()
 
 // header (if present)
 try {
