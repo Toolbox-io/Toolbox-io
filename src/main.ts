@@ -330,8 +330,6 @@ function setupGrid() {
 
     const placeholders: HTMLDivElement[] = [];
 
-    // TODO fix unnessesary placeholders
-
     for (let row = 1; row <= rows; row++) {
         let prevItem: HTMLElement | null = null;
         for (let column = 1; column <= columns; column++) {

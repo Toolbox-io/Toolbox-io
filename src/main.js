@@ -289,7 +289,6 @@ function setupGrid() {
     const rows = getRows(features);
     const columns = getColumns(features);
     const placeholders = [];
-    // TODO fix unnessesary placeholders
     for (let row = 1; row <= rows; row++) {
         let prevItem = null;
         for (let column = 1; column <= columns; column++) {
