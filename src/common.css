@@ -432,3 +432,11 @@ div:has(table) {
         border-radius: 5px;
     }
 }
+
+a:not(.noeffect) {
+    transition: transform 0.5s ease;
+    display: inline-block;
+}
+a:not(.noeffect):active {
+    transform: scale(0.95);
+}
