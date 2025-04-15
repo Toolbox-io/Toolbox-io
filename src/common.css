@@ -101,7 +101,7 @@ md-filled-button {
     user-select: none;
     padding: 10px;
     border-radius: 20px;
-    transition: transform 0.5s ease, background-color 0.25s ease;
+    transition: transform 0.5s ease, background 0.25s ease;
     text-decoration: none !important;
     cursor: pointer;
     color: white;
@@ -127,7 +127,7 @@ md-filled-button:link {
 }
 
 body.hasHover #tabs .tab:not(.selected):hover {
-    color: #3ec322;
+    color: var(--color-primary);
 }
 
 #header {
