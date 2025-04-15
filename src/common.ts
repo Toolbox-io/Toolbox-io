@@ -52,17 +52,14 @@ export namespace Utils {
     }
 
     export async function switchTab(tab: 0 | 1 | 2) {
-        if (tab === 0) {
-            open(location.origin, "_self");
-        } else if (tab === 1) {
-            open("https://github.com/Toolbox-io/Toolbox-io/issues", "_self");
-            return;
-        } else if (tab === 2) {
-            open(`${location.origin}/guides`, "_self");
+        switch (tab) {
+            case 0: open(location.origin, "_self"); break;
+            case 1: open("https://github.com/Toolbox-io/Toolbox-io/issues", "_self"); break;
+            case 2: open(`${location.origin}/guides`, "_self"); break;
         }
     }
 
-    export async function notification(type: 'error' | 'success', _headline: string, _message: string, durationSec?: number) {
+    export async function notification(type: 'error' | 'success', _headline: string, _message: string, durationSec: number = 5) {
         const status: HTMLDivElement = document.getElementById("status") as HTMLDivElement;
         const progress = status.querySelector(".progress > .progress_bar") as HTMLDivElement;
         const headline = status.querySelector(".head > .message_headline") as HTMLElement;
@@ -74,7 +71,7 @@ export namespace Utils {
         headline.textContent = _headline;
         message.textContent = _message;
 
-        progress.style.transitionDuration = `${durationSec || 5}s`;
+        progress.style.transitionDuration = `${durationSec}s`;
         progress.style.width = "100%";
 
         close.addEventListener("click", hide);
@@ -92,8 +89,6 @@ export namespace Utils {
         await delay((durationSec || 5) * 1000);
         await hide();
     }
-
-    (window as any).notify = notification;
 }
 
 // noinspection JSUnusedGlobalSymbols
