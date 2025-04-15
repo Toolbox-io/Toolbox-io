@@ -1,5 +1,11 @@
 <!--suppress HtmlDeprecatedAttribute -->
-
+<p align="center">
+  <img
+    src="src/res/icon.svg"
+    align="center"
+    width="64"
+    height="64" />
+</p>
 <h1 align="center">Toolbox.io</h1>
 <p align="center"><b>Все нужное — в одном приложении</b></p>
 <p align="center">
