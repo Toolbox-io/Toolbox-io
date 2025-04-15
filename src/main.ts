@@ -322,10 +322,15 @@ function getItem(grid: HTMLElement, row: number, column: number): HTMLElement | 
 }
 
 function setupGrid() {
-    const rows = getRows(features)
-    const columns = getColumns(features)
+    features
+        .querySelectorAll(".placeholder")
+        .forEach((el) => el.remove());
+    const rows = getRows(features);
+    const columns = getColumns(features);
 
-    const placeholders: HTMLDivElement[] = []
+    const placeholders: HTMLDivElement[] = [];
+
+    // TODO fix unnessesary placeholders
 
     for (let row = 1; row <= rows; row++) {
         let prevItem: HTMLElement | null = null;

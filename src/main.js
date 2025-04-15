@@ -283,9 +283,13 @@ function getItem(grid, row, column) {
     return items[index] || null;
 }
 function setupGrid() {
+    features
+        .querySelectorAll(".placeholder")
+        .forEach((el) => el.remove());
     const rows = getRows(features);
     const columns = getColumns(features);
     const placeholders = [];
+    // TODO fix unnessesary placeholders
     for (let row = 1; row <= rows; row++) {
         let prevItem = null;
         for (let column = 1; column <= columns; column++) {
