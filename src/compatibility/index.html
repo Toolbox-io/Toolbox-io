@@ -9,10 +9,8 @@
 
         <link rel="stylesheet" href="style.css" />
         <link rel="stylesheet" href="../common.css" />
-        <link rel="stylesheet" href="../style_md.css" />
 
         <script src="../lib/jquery.js"></script>
-
         <!--suppress ES6ConvertVarToLetConst, JSUnusedGlobalSymbols -->
         <script type="module" src="../common.js"></script>
     </head>
@@ -24,24 +22,12 @@
             <div id="tabs">
                 <div class="tab" id="home">Главная</div>
                 <div class="tab" id="download">Скачать</div>
-                <div class="tab selected" id="guides">Гайды</div>
+                <div class="tab" id="guides">Гайды</div>
             </div>
         </div>
         <div class="wrapper">
-            <div>
-                <div id="main" class="automargin">
-                    <h1 id="headline">Гайды</h1>
-                    <div id="guides_list"></div>
-                </div>
-            </div>
-            <div class="page_hidden">
-                <div class="automargin">
-                    <div id="guide_back" class="toucheffect">
-                        <span class="material-symbols filled">arrow_back</span>
-                        <div class="label">Назад</div>
-                    </div>
-                    <div id="guide" class="markdown"></div>
-                </div>
+            <div id="main" class="automargin">
+
             </div>
         </div>
         <div id="status_wrapper">
@@ -63,6 +49,7 @@
                 </div>
             </div>
         </div>
+        <div id="card_dialog" class="dialog"></div>
         <script type="module" src="main.js"></script>
     </body>
 </html>

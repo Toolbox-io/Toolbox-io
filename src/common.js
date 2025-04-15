@@ -1,3 +1,6 @@
+// @ts-ignore
+import { marked } from "./node_modules/marked/lib/marked.esm.js";
+window.marked = marked;
 // noinspection JSUnusedLocalSymbols,ES6ConvertVarToLetConst,JSUnusedGlobalSymbols
 export var exports = {};
 export const token = "gi" + "thu" + "b_p" + "at_11BPW3Z" + "7Y0M847x0i" + "90jER_DKs" +
@@ -87,6 +90,64 @@ export var Utils;
         await hide();
     }
     Utils.notification = notification;
+    async function loadMarkdown(file, element = document.body) {
+        if (file === "" || !file.endsWith(".md")) {
+            throw new SyntaxError("Invalid file");
+        }
+        let text = await (await fetch(file)).text();
+        const header = getMarkdownHeader(text);
+        text = text.replace(/^---(.|\n)*?^---/g, '');
+        text = text.replace(/^([\t ]*)> \[!(IMPORTANT|TIP|NOTE|WARNING)]\n((\s*>.*)*)/gm, `$1> [!$2]\n$1>\n$3`);
+        element.innerHTML = await marked.parse(text);
+        // apply styles
+        element.querySelectorAll("blockquote > p:first-child").forEach((element) => {
+            const match = element.innerHTML.match(/^\[!(IMPORTANT|TIP|WARNING|NOTE)]$/);
+            if (match != null) {
+                const label = match[1].toLowerCase();
+                element.classList.add(label);
+                if (label === "tip") {
+                    element.innerHTML = "Совет";
+                }
+                else if (label === "important") {
+                    element.innerHTML = "Важно";
+                }
+                else if (label === "note") {
+                    element.innerHTML = "Примечание";
+                }
+                else if (label === "warning") {
+                    element.innerHTML = "Внимание";
+                }
+                const icon = document.createElement("span");
+                icon.classList.add("material-symbols");
+                if (label === "tip") {
+                    icon.textContent = "lightbulb_2";
+                }
+                else if (label === "important") {
+                    icon.textContent = "feedback";
+                }
+                else if (label === "note") {
+                    icon.textContent = "info";
+                }
+                else if (label === "warning") {
+                    icon.textContent = "warning";
+                }
+                element.insertAdjacentElement("afterbegin", icon);
+            }
+        });
+        element.querySelectorAll("img").forEach((element) => {
+            element.loading = "lazy";
+            element.addEventListener("load", () => {
+                element.classList.add("loaded");
+            });
+        });
+        element.querySelectorAll("table").forEach((el) => {
+            const div = document.createElement("div");
+            el.insertAdjacentElement("beforebegin", div);
+            div.appendChild(el);
+        });
+        return header;
+    }
+    Utils.loadMarkdown = loadMarkdown;
 })(Utils || (Utils = {}));
 // noinspection JSUnusedGlobalSymbols
 export var Cookies;
@@ -190,7 +251,6 @@ try {
         console.log(anchor);
     }
     $(window).on('scroll', () => {
-        // @ts-ignore
         if ($(window).scrollTop() + $(window).height() >= anchor.position().top && $(window).scrollTop() !== 0) {
             header.removeClass("top");
         }
@@ -198,10 +258,6 @@ try {
         else {
             header.addClass("top");
         }
-    });
-    // @ts-ignore
-    document.getElementById("issues").addEventListener("click", () => {
-        Utils.switchTab(1);
     });
 }
 catch (e) {
