@@ -415,6 +415,11 @@ table {
     }
 }
 
+div > table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 div:has(table) {
     overflow: auto;
 
