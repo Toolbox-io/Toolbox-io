@@ -6,8 +6,15 @@
     width="64"
     height="64" />
 </p>
-<h1 align="center">Toolbox.io</h1>
-<p align="center"><b>Все нужное — в одном приложении</b></p>
+<div id="user-content-toc">
+  <ul align="center" style="list-style: none;">
+    <summary>
+      <h1>Toolbox.io</h1>
+      <p align="center"><b>Все нужное — в одном приложении</b></p>
+    </summary>
+  </ul>
+</div>
+
 <p align="center">
  <a href="LICENSE">
   <img alt="Лицензия" src="https://img.shields.io/github/license/Toolbox-io/Toolbox-io?label=%D0%BB%D0%B8%D1%86%D0%B5%D0%BD%D0%B7%D0%B8%D1%8F">
