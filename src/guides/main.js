@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         const guide = document.createElement("div");
                         guide.classList.add("guide", "toucheffect");
                         const icon = document.createElement("span");
-                        icon.classList.add("material-symbols-outlined", "guide_icon");
+                        icon.classList.add("material-symbols", "guide_icon");
                         if (guide_header.Icon) {
                             icon.textContent = guide_header.Icon;
                         }

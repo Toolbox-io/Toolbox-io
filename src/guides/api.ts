@@ -48,7 +48,7 @@ export async function loadMarkdown(file: string, element: HTMLElement = document
                 }
 
                 const icon = document.createElement("span");
-                icon.classList.add("material-symbols-outlined");
+                icon.classList.add("material-symbols");
                 if (label === "tip") {
                     icon.textContent = "lightbulb_2";
                 } else if (label === "important") {
