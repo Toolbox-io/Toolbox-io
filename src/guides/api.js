@@ -29,7 +29,7 @@ export async function loadMarkdown(file, element = document.body) {
                 element.innerHTML = "Внимание";
             }
             const icon = document.createElement("span");
-            icon.classList.add("material-symbols-outlined");
+            icon.classList.add("material-symbols");
             if (label === "tip") {
                 icon.textContent = "lightbulb_2";
             }
