@@ -1,6 +1,12 @@
 #main {
     #headline {
-        background: linear-gradient(149deg, rgba(255,189,33,1) 0%, rgba(255,111,0,1) 100%);
+        background: linear-gradient(
+            133deg,
+            rgba(48, 134, 193, 1) 0%,
+            rgba(60, 96, 178, 1) 37%,
+            rgba(125, 70, 218, 1) 71%,
+            rgba(228, 9, 255, 1) 100%
+        );
         color: transparent;
         background-clip: text;
     }
@@ -12,7 +18,7 @@
 
         .feature {
             border-radius: 20px;
-            background-color: rgb(30 30 30);
+            background-color: var(--color-surfaceContainer);
             padding: 20px;
             box-shadow: 2px 2px 10px #101010;
             display: flex;

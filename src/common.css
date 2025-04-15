@@ -5,7 +5,44 @@
     --hover-color: rgba(110, 110, 110, 0.3);
     --active-color: rgba(163, 163, 163, 0.3);
 
-    --separator-color: #414141;
+    --separator-color: var(--color-outline);
+
+    --color-primary: #C1C1FF;
+    --color-onPrimary: #2A2A60;
+    --color-primaryContainer: #404178;
+    --color-primaryContainerDarkened: #2d2d54;
+    --color-onPrimaryContainer: #E2DFFF;
+    --color-secondary: #C6C4DD;
+    --color-onSecondary: #2F2F42;
+    --color-secondaryContainer: #454559;
+    --color-onSecondaryContainer: #E2E0F9;
+    --color-tertiary: #E9B9D3;
+    --color-onTertiary: #46263A;
+    --color-tertiaryContainer: #5F3C51;
+    --color-onTertiaryContainer: #FFD8EB;
+    --color-error: #FFB4AB;
+    --color-onError: #690005;
+    --color-errorContainer: #93000A;
+    --color-onErrorContainer: #FFDAD6;
+    --color-background: #131318;
+    --color-onBackground: #E4E1E9;
+    --color-surface: #131318;
+    --color-onSurface: #E4E1E9;
+    --color-surfaceVariant: #47464F;
+    --color-onSurfaceVariant: #C8C5D0;
+    --color-outline: #918F9A;
+    --color-outlineVariant: #47464F;
+    --color-scrim: #000000;
+    --color-inverseSurface: #E4E1E9;
+    --color-inverseOnSurface: #303036;
+    --color-inversePrimary: #585992;
+    --color-surfaceDim: #131318;
+    --color-surfaceBright: #39383F;
+    --color-surfaceContainerLowest: #0E0E13;
+    --color-surfaceContainerLow: #1B1B21;
+    --color-surfaceContainer: #1F1F25;
+    --color-surfaceContainerHigh: #2A292F;
+    --color-surfaceContainerHighest: #35343A;
 }
 
 .textstyling {
@@ -21,7 +58,7 @@ hr {
 }
 
 html, body {
-    background-color: #2a2a2a;
+    background-color: var(--color-surface);
     color-scheme: dark;
     margin: 0;
 }
@@ -60,27 +97,25 @@ a:has(md-filled-button) {
 }
 
 md-filled-button {
-    background: linear-gradient(144deg, var(--btn-color-1) 0%, var(--btn-color-2) 100%);
+    background-color: var(--color-primaryContainer);
     user-select: none;
     padding: 10px;
     border-radius: 20px;
-    transition: --btn-color-1 250ms, --btn-color-2 250ms;
+    transition: transform 0.5s ease, background-color 0.25s ease;
     text-decoration: none !important;
     cursor: pointer;
     color: white;
     display: block;
+    overflow: hidden;
+    position: relative;
 }
 
 md-filled-button:hover {
-    --btn-color-1: #831cff;
-    --btn-color-2: #ac13ff;
-    text-decoration: none;
+    background-color: var(--color-primaryContainerDarkened);
 }
 
 md-filled-button:active {
-    --btn-color-1: #7200fc;
-    --btn-color-2: #9e00f4;
-    text-decoration: none;
+    transform: scale(0.95);
 }
 
 md-filled-button:visited {
