@@ -9,7 +9,11 @@
 <div id="user-content-toc">
   <ul align="center" style="list-style: none;">
     <summary>
-      <h1>Toolbox.io</h1>
+      <h1>
+        <a href="https://toolbox-io">
+          Toolbox.io
+        </a>
+      </h1>
       <p align="center"><b>Все нужное — в одном приложении</b></p>
     </summary>
   </ul>
