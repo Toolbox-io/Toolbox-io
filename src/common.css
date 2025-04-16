@@ -590,3 +590,7 @@ a:not(.noeffect):active {
         margin-bottom: 10px;
     }
 }
+
+* {
+    -webkit-tap-highlight-color: transparent;
+}
