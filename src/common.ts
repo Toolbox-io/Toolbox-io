@@ -56,12 +56,24 @@ export namespace Utils {
         return new Promise(resolve => setTimeout(resolve, millis));
     }
 
-    export async function switchTab(tab: 0 | 1 | 2) {
+    export type Tab = 0 | 1 | 2
+
+    export async function switchTab(tab: Tab) {
         switch (tab) {
-            case 0: open(location.origin, "_self"); break;
-            case 1: open("https://github.com/Toolbox-io/Toolbox-io/issues", "_self"); break;
-            case 2: open(`${location.origin}/guides`, "_self"); break;
+            case 0: open("/", "_self"); break;
+            case 1: open(`/#download_h`, "_self"); break;
+            case 2: open(`/guides`, "_self"); break;
         }
+    }
+
+    export function setUpTabs() {
+        document.getElementById("home")!!.addEventListener("click", () => switchTab(0));
+        document.getElementById("download")!!.addEventListener("click", () => switchTab(1));
+        document.getElementById("guides")!!.addEventListener("click", () => switchTab(2));
+    }
+
+    export function regexMatches(regex: RegExp, string: string): boolean {
+        return regex.exec(string) !== null;
     }
 
     export async function notification(type: 'error' | 'success', _headline: string, _message: string, durationSec: number = 5) {

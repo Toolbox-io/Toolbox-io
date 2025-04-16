@@ -7,15 +7,11 @@ var delay = Utils.delay;
 document.getElementById("home").addEventListener("click", () => {
     doScrolling("body", 1000);
 });
-document.getElementById("guides").addEventListener("click", () => {
-    switchTab(2);
-});
+document.getElementById("download").addEventListener("click", () => switchTab(1));
+document.getElementById("guides").addEventListener("click", () => switchTab(2));
 // Buttons
 document.getElementById("issues_btn").addEventListener("click", () => {
-    switchTab(1);
-});
-document.getElementById("download").addEventListener("click", () => {
-    doScrolling("#download_h", 1000);
+    open("https://github.com/Toolbox-io/Toolbox-io/issues", "_self");
 });
 // Scaling video in App Locker
 let videoListenerActive = true;

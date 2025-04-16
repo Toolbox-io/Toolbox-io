@@ -1,10 +1,7 @@
 import {Utils} from "../common.js";
-import switchTab = Utils.switchTab;
 import loadMarkdown = Utils.loadMarkdown;
+import setUpTabs = Utils.setUpTabs;
 
-document.getElementById("home")!!.addEventListener("click", () => switchTab(0));
-document.getElementById("download")!!.addEventListener("click", () => {
-    open(`${location.origin}#download_h`, "_self");
-});
+setUpTabs();
 
 await loadMarkdown("COMPATIBILITY.md", document.getElementById("main")!!);

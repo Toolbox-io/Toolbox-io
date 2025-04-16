@@ -53,17 +53,27 @@ export var Utils;
     async function switchTab(tab) {
         switch (tab) {
             case 0:
-                open(location.origin, "_self");
+                open("/", "_self");
                 break;
             case 1:
-                open("https://github.com/Toolbox-io/Toolbox-io/issues", "_self");
+                open(`/#download_h`, "_self");
                 break;
             case 2:
-                open(`${location.origin}/guides`, "_self");
+                open(`/guides`, "_self");
                 break;
         }
     }
     Utils.switchTab = switchTab;
+    function setUpTabs() {
+        document.getElementById("home").addEventListener("click", () => switchTab(0));
+        document.getElementById("download").addEventListener("click", () => switchTab(1));
+        document.getElementById("guides").addEventListener("click", () => switchTab(2));
+    }
+    Utils.setUpTabs = setUpTabs;
+    function regexMatches(regex, string) {
+        return regex.exec(string) !== null;
+    }
+    Utils.regexMatches = regexMatches;
     async function notification(type, _headline, _message, durationSec = 5) {
         const status = document.getElementById("status");
         const progress = status.querySelector(".progress > .progress_bar");
