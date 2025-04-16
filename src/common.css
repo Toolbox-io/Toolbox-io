@@ -337,6 +337,10 @@ a:not(.noeffect):active {
     transform: scale(0.95);
 }
 
+a {
+    text-decoration: none;
+}
+
 @keyframes rotate {
     0% {
         rotate: 0;
