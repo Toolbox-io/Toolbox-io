@@ -1,0 +1,8 @@
+a:not(.noeffect) {
+    transition: transform 0.5s ease;
+    display: inline-block;
+
+    &:active {
+        transform: scale(0.95);
+    }
+}

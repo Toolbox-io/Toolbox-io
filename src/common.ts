@@ -140,12 +140,15 @@ export namespace Utils {
         }
 
         let text = await (await fetch(file)).text();
+        console.log(text);
         const header = getMarkdownHeader(text);
-        text = text.replace(/^---(.|\n)*?^---/g, '');
+        text = text.replace(/^---(.|\n)*?^---/gm, '');
+        console.log(text);
         text = text.replace(
             /^([\t ]*)> \[!(IMPORTANT|TIP|NOTE|WARNING)]\n((\s*>.*)*)/gm,
             `$1> [!$2]\n$1>\n$3`
         );
+        console.log(text);
         element.innerHTML = await marked.parse(text);
 
         // apply styles
