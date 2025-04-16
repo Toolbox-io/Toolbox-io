@@ -261,16 +261,16 @@ export var Components;
             const shadow = this.attachShadow({ mode: "open" });
             // noinspection CssUnknownTarget
             shadow.innerHTML = `
-        <style>@import url(/components/header.css);</style>
-        <div class="icon appicon"></div>
-        <div class="title">Toolbox.io</div>
-        <div class="separator"></div>
-        <div id="tabs">
-            <div class="tab" id="home">Главная</div>
-            <div class="tab" id="download">Скачать</div>
-            <div class="tab" id="guides">Гайды</div>
-        </div>
-        `;
+                <style>@import url(/css/components/header.css);</style>
+                <div class="icon appicon"></div>
+                <div class="title">Toolbox.io</div>
+                <div class="separator"></div>
+                <div id="tabs">
+                    <div class="tab" id="home">Главная</div>
+                    <div class="tab" id="download">Скачать</div>
+                    <div class="tab" id="guides">Гайды</div>
+                </div>
+            `;
             this.shadowRoot.querySelector(".icon.appicon").addEventListener("click", () => {
                 open("/", "_self");
             });

@@ -1,11 +1,10 @@
-@import url(res/fonts/montserrat/index.css);
-@import url(res/fonts/material-symbols/index.css);
+@import url(../res/fonts/montserrat/index.css);
+@import url(../res/fonts/material-symbols/index.css);
 
+/* Variables */
 :root {
     --hover-color: rgba(110, 110, 110, 0.3);
     --active-color: rgba(163, 163, 163, 0.3);
-
-    --separator-color: var(--color-outline);
 
     --color-primary: #C1C1FF;
     --color-onPrimary: #2A2A60;
@@ -53,6 +52,17 @@
     --spinner-color: #fffaf0;
 }
 
+html, body {
+    background-color: var(--color-surface);
+    color-scheme: dark;
+    margin: 0;
+}
+
+* {
+    font-family: "Montserrat", "Rethink Sans", sans-serif;
+    -webkit-tap-highlight-color: transparent !important;
+}
+
 .textstyling {
     h4 {
         margin-block-end: 0;
@@ -62,17 +72,7 @@
 hr {
     height: 1px;
     border: none;
-    background-color: var(--separator-color);
-}
-
-html, body {
-    background-color: var(--color-surface);
-    color-scheme: dark;
-    margin: 0;
-}
-
-* {
-    font-family: "Montserrat", "Rethink Sans", sans-serif;
+    background-color: var(--color-outline);
 }
 
 .automargin {
@@ -335,10 +335,6 @@ a:not(.noeffect) {
 }
 a:not(.noeffect):active {
     transform: scale(0.95);
-}
-
-a {
-    text-decoration: none;
 }
 
 @keyframes rotate {
