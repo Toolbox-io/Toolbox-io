@@ -1,8 +1,11 @@
-import {Cookies, getMarkdownHeader, token, Utils} from "../common.js";
+import {Components, Cookies, token, Utils} from "../common.js";
 import switchTab = Utils.switchTab;
 import delay = Utils.delay;
 import {GuideHeader, GuideJSON} from "./api.js";
 import loadMarkdown = Utils.loadMarkdown;
+import getMarkdownHeader = Utils.getMarkdownHeader;
+import TioHeader = Components.TioHeader;
+import setUpTabs = Utils.setUpTabs;
 
 let _currentPage: 0 | 1 = 0;
 
@@ -44,12 +47,9 @@ async function switchPage(page: 0 | 1) {
     sizeElements();
 }
 
-(window as any).switchPage = switchPage;
+const header = document.querySelector("tio-header") as TioHeader;
 
-document.getElementById("home")!!.addEventListener("click", () => switchTab(0));
-document.getElementById("download")!!.addEventListener("click", () => {
-    open(`${location.origin}#download_h`, "_self");
-});
+setUpTabs();
 
 sizeElements();
 

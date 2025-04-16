@@ -7,7 +7,22 @@ export const token = "gi" + "thu" + "b_p" + "at_11BPW3Z" + "7Y0M847x0i" + "90jER
     "vP8tQQwkRCvQd" + "0MCf7hc5" + "K9QVvtF" + "8eoI5eM9Drg" + "oVWG5FHXPIsg4HeMh";
 export var Utils;
 (function (Utils) {
-    /* import loadIssues = GithubUtils.loadIssues; */
+    function getMarkdownHeader(markdown) {
+        const headerRegex = /---\n((?:[^:\n]+:[^:\n]+\n)+)---/;
+        const match = markdown.match(headerRegex);
+        if (!match) {
+            return {};
+        }
+        const headerContent = match[1];
+        const lines = headerContent.split('\n');
+        const properties = {};
+        for (const line of lines) {
+            const [key, value] = line.split(':').map(part => part.trim());
+            properties[key] = value;
+        }
+        return properties;
+    }
+    Utils.getMarkdownHeader = getMarkdownHeader;
     function getElementY(query) {
         // @ts-ignore
         return window.scrollY + document.querySelector(query).getBoundingClientRect().top;
@@ -65,9 +80,10 @@ export var Utils;
     }
     Utils.switchTab = switchTab;
     function setUpTabs() {
-        document.getElementById("home").addEventListener("click", () => switchTab(0));
-        document.getElementById("download").addEventListener("click", () => switchTab(1));
-        document.getElementById("guides").addEventListener("click", () => switchTab(2));
+        const header = document.querySelector("tio-header");
+        header.tabs[0].addEventListener("click", () => switchTab(0));
+        header.tabs[1].addEventListener("click", () => switchTab(1));
+        header.tabs[2].addEventListener("click", () => switchTab(2));
     }
     Utils.setUpTabs = setUpTabs;
     function regexMatches(regex, string) {
@@ -204,21 +220,6 @@ export var Cookies;
     }
     Cookies.getAll = getAll;
 })(Cookies || (Cookies = {}));
-export function getMarkdownHeader(markdown) {
-    const headerRegex = /---\n((?:[^:\n]+:[^:\n]+\n)+)---/;
-    const match = markdown.match(headerRegex);
-    if (!match) {
-        return {};
-    }
-    const headerContent = match[1];
-    const lines = headerContent.split('\n');
-    const properties = {};
-    for (const line of lines) {
-        const [key, value] = line.split(':').map(part => part.trim());
-        properties[key] = value;
-    }
-    return properties;
-}
 // hover fix
 (() => {
     let hasHoverClass = false;
@@ -249,27 +250,57 @@ export function getMarkdownHeader(markdown) {
     document.addEventListener('mousemove', enableHover, true);
     enableHover();
 })();
-// header (if present)
-try {
-    const header = $("#header");
-    let anchor = $("#headline");
-    try {
-        anchor.position().top;
-    }
-    catch (e) {
-        anchor = $("#header + *");
-        console.log(anchor);
-    }
-    $(window).on('scroll', () => {
-        if ($(window).scrollTop() + $(window).height() >= anchor.position().top && $(window).scrollTop() !== 0) {
-            header.removeClass("top");
+export var Components;
+(function (Components) {
+    class TioHeader extends HTMLElement {
+        get tabs() {
+            return Array.from(this.shadowRoot.querySelector("#tabs").children);
         }
-        // @ts-ignore
-        else {
-            header.addClass("top");
+        constructor() {
+            super();
+            const shadow = this.attachShadow({ mode: "open" });
+            // noinspection CssUnknownTarget
+            shadow.innerHTML = `
+        <style>@import url(/components/header.css);</style>
+        <div class="icon appicon"></div>
+        <div class="title">Toolbox.io</div>
+        <div class="separator"></div>
+        <div id="tabs">
+            <div class="tab" id="home">Главная</div>
+            <div class="tab" id="download">Скачать</div>
+            <div class="tab" id="guides">Гайды</div>
+        </div>
+        `;
+            this.shadowRoot.querySelector(".icon.appicon").addEventListener("click", () => {
+                open("/", "_self");
+            });
+            this.internals = this.attachInternals();
+            try {
+                $(window).on('scroll', () => {
+                    if ($(window).scrollTop() + $(window).height() >= 0 && $(window).scrollTop() !== 0) {
+                        this.internals.states.add("scrolled");
+                    }
+                    else {
+                        this.internals.states.delete("scrolled");
+                    }
+                });
+            }
+            catch (e) {
+                console.log(e);
+            }
         }
-    });
-}
-catch (e) {
-    console.log(e);
-}
+        attributeChangedCallback(name, oldValue, newValue) {
+            console.log(`Attribute ${name} has changed.`);
+            switch (name) {
+                case "tab": {
+                    const tabs = this.shadowRoot.querySelector("#tabs").children;
+                    tabs[Number(oldValue)].classList.remove("selected");
+                    tabs[Number(newValue)].classList.add("selected");
+                }
+            }
+        }
+    }
+    TioHeader.observedAttributes = ["tab"];
+    Components.TioHeader = TioHeader;
+    customElements.define("tio-header", TioHeader);
+})(Components || (Components = {}));

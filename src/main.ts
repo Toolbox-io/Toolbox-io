@@ -1,16 +1,18 @@
 import switchTab = Utils.switchTab;
-import {Cookies, token, Utils} from "./common.js";
+import {Components, Cookies, token, Utils} from "./common.js";
 import doScrolling = Utils.doScrolling;
 import delay = Utils.delay;
+import TioHeader = Components.TioHeader;
 
 // Set up buttons
+const header = document.querySelector("tio-header")!! as TioHeader;
 
 // Tabs
-document.getElementById("home")!!.addEventListener("click", () => {
+header.tabs[0].addEventListener("click", () => {
     doScrolling("body", 1000);
 });
-document.getElementById("download")!!.addEventListener("click", () => switchTab(1));
-document.getElementById("guides")!!.addEventListener("click", () => switchTab(2));
+header.tabs[1].addEventListener("click", () => switchTab(1));
+header.tabs[2].addEventListener("click", () => switchTab(2));
 
 // Buttons
 document.getElementById("issues_btn")!!.addEventListener("click", () => {

@@ -1,0 +1,112 @@
+:host {
+    backdrop-filter: none;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    width: fit-content;
+    transition: all 1s;
+    top: 10px;
+    z-index: 100;
+    user-select: none;
+    box-sizing: border-box;
+
+    .icon {
+        background-size: cover;
+        flex-shrink: 0;
+    }
+
+    .appicon {
+        background-image: url("../res/icon.svg");
+        width: 60px;
+        height: 60px;
+        border-radius: 15px;
+    }
+
+    .title {
+        margin-left: 10px;
+        font-size: 20px;
+        color: white;
+        font-weight: bold;
+        flex-shrink: 0;
+        transition-property: width, margin, padding;
+        box-sizing: border-box;
+    }
+
+    .separator {
+        margin: 0 10px 0 10px;
+        height: 30px;
+        width: 2px;
+        background-color: white;
+        border-radius: 2px;
+        box-sizing: content-box;
+        flex-shrink: 0;
+    }
+
+    ::-webkit-scrollbar {
+        height: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: rgb(73, 73, 73);
+        border-radius: 5px;
+    }
+
+    #tabs {
+        display: flex;
+        gap: 10px;
+        color: white;
+        margin-right: 10px;
+        overflow-x: scroll;
+        padding-top: 5px;
+        flex-shrink: 1;
+
+        .tab {
+            cursor: pointer;
+            transition: color 0.3s ease;
+            font-size: 18px;
+            position: relative;
+
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
+        }
+
+        .tab.selected {
+            font-weight: bold;
+        }
+    }
+}
+
+/*noinspection CssInvalidPseudoSelector*/
+:host(:state(scrolled)) {
+    backdrop-filter: blur(10px) brightness(50%);
+    border-radius: 20px;
+}
+
+@media (max-width: 460px) {
+    :host {
+        .title {
+            display: none;
+            width: 0;
+            margin: 0;
+            padding: 0;
+        }
+    }
+}
+
+@media (max-width: 370px) {
+    :host {
+        margin-top: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        border-radius: 0 0 20px 20px !important;
+        padding-left: 10px !important;
+        width: 100% !important;
+        top: 0 !important;
+    }
+}
