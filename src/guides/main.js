@@ -110,6 +110,7 @@ if (bool) {
                         loadMarkdown(name, document.getElementById("guide"));
                         switchPage(1);
                     });
+                    sizeElements();
                 }
                 catch (e) {
                     console.log(e);

@@ -312,5 +312,42 @@ export var Components;
         }
     }
     Components.TioHeader = TioHeader;
+    class TioFooter extends HTMLElement {
+        constructor() {
+            super();
+            const shadow = this.attachShadow({ mode: "open" });
+            // noinspection CssUnknownTarget
+            shadow.innerHTML = `
+                <style>@import url(/css/components/footer.css);</style>
+                <div class="footer_column">
+                    <div class="footer_title">Toolbox.io</div>
+                    <a href="/" draggable="false">Главная</a>
+                    <a href="/guides" draggable="false">Гайды</a>
+                    <a href="/compatibility" draggable="false">Совместимость</a>
+                </div>
+                <div class="footer_column">
+                    <div class="footer_title">Документы</div>
+                    <a href="/privacy" draggable="false">Политика конфиденциальности</a>
+                    <a href="https://github.com/Toolbox-io/Toolbox-io/tree/main/LICENSE" draggable="false">Лицензия</a>
+                </div>
+                <div class="footer_column">
+                    <div class="footer_title">Ресурсы</div>
+                    <a href="https://github.com/Toolbox-io/Toolbox-io" draggable="false">Репозиторий на GitHub</a>
+                    <a href="https://github.com/orgs/Toolbox-io/projects/1" draggable="false">Проект на GitHub</a>
+                </div>
+            `;
+            shadow.querySelectorAll(".footer_column a").forEach((el) => {
+                const a = el;
+                console.log(a);
+                const regex = /^(?!\/)(.+?)\/*$/;
+                if (a.href.replace(regex, "$1/") === location.href.replace(regex, "$1/")) {
+                    a.classList.add("selected");
+                    a.addEventListener("click", (e) => e.preventDefault());
+                }
+            });
+        }
+    }
+    Components.TioFooter = TioFooter;
     customElements.define("tio-header", TioHeader);
+    customElements.define("tio-footer", TioFooter);
 })(Components || (Components = {}));
