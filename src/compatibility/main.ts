@@ -4,4 +4,4 @@ import setUpTabs = Utils.setUpTabs;
 
 setUpTabs();
 
-await loadMarkdown("COMPATIBILITY.md", document.getElementById("main")!!);
+loadMarkdown("COMPATIBILITY.md", document.getElementById("main")!!);

@@ -38,7 +38,6 @@ async function switchPage(page) {
     _currentPage = page;
     sizeElements();
 }
-const header = document.querySelector("tio-header");
 setUpTabs();
 sizeElements();
 const guides = document.getElementById("guides_list");

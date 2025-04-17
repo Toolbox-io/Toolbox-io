@@ -1,10 +1,10 @@
-import {Components, Cookies, token, Utils} from "../common.js";
-import switchTab = Utils.switchTab;
+import {Cookies, token, Utils} from "../common.js";
+
 import delay = Utils.delay;
 import {GuideHeader, GuideJSON} from "./api.js";
 import loadMarkdown = Utils.loadMarkdown;
 import getMarkdownHeader = Utils.getMarkdownHeader;
-import TioHeader = Components.TioHeader;
+
 import setUpTabs = Utils.setUpTabs;
 
 let _currentPage: 0 | 1 = 0;
@@ -46,8 +46,6 @@ async function switchPage(page: 0 | 1) {
     _currentPage = page;
     sizeElements();
 }
-
-const header = document.querySelector("tio-header") as TioHeader;
 
 setUpTabs();
 

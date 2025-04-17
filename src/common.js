@@ -182,11 +182,10 @@ export var Utils;
 export var Cookies;
 (function (Cookies) {
     function get(name) {
-        var _a;
         const value = `; ${document.cookie}`;
         const parts = value.split(`; ${name}=`);
         if (parts.length === 2) {
-            const result = (_a = parts.pop()) === null || _a === void 0 ? void 0 : _a.split(';').shift();
+            const result = parts.pop()?.split(';').shift();
             if (result === undefined) {
                 return null;
             }
@@ -256,6 +255,8 @@ export var Cookies;
 export var Components;
 (function (Components) {
     class TioHeader extends HTMLElement {
+        static observedAttributes = ["tab"];
+        internals;
         get tabs() {
             return Array.from(this.shadowRoot.querySelector("#tabs").children);
         }
@@ -303,7 +304,6 @@ export var Components;
             }
         }
     }
-    TioHeader.observedAttributes = ["tab"];
     Components.TioHeader = TioHeader;
     customElements.define("tio-header", TioHeader);
 })(Components || (Components = {}));
