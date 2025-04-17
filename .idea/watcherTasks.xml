@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectTasksOptions">
     <TaskOptions isEnabled="true">
-      <option name="arguments" value="$USER_HOME$/.nvm/versions/node/v20.16.0/bin/sass $FileName$:$FileNameWithoutExtension$.css --style compressed" />
+      <option name="arguments" value="-c &quot;/home/denis0001-dev/.nvm/versions/node/v20.16.0/bin/node /home/denis0001-dev/.nvm/versions/node/v20.16.0/bin/sass $FileName$:$FileNameWithoutExtension$.css --style compressed &amp;&amp; /home/denis0001-dev/.nvm/versions/node/v20.16.0/bin/node /home/denis0001-dev/.nvm/versions/node/v20.16.0/bin/postcss $FileNameWithoutExtension$.css --replace --use autoprefixer --no-map&quot;" />
       <option name="checkSyntaxErrors" value="true" />
       <option name="description" />
       <option name="exitCodeBehavior" value="ERROR" />
@@ -14,7 +14,7 @@
         <array />
       </option>
       <option name="outputFromStdout" value="false" />
-      <option name="program" value="$USER_HOME$/.nvm/versions/node/v20.16.0/bin/node" />
+      <option name="program" value="bash" />
       <option name="runOnExternalChanges" value="true" />
       <option name="scopeName" value="Project Files" />
       <option name="trackOnlyRoot" value="true" />
