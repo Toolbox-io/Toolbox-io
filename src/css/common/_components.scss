@@ -1,5 +1,6 @@
 @use "visualEffects";
 @import "colors";
+@import "mixins";
 
 a:has(md-filled-button) {
     text-decoration: none !important;
@@ -153,4 +154,26 @@ div.warning {
 .dialog.open {
     opacity: 1;
     height: 100vh;
+}
+
+pre {
+    background-color: $color-githubDark-background;
+    padding: 16px 16px 0 16px;
+    border-radius: 20px;
+    width: min-content;
+    @include automargin();
+
+    code {
+        overflow: auto;
+        width: 100%;
+        display: block;
+        padding: 0 0 16px 0 !important;
+        font-family: monospace !important;
+        text-align: left;
+        box-sizing: border-box;
+
+        * {
+            font-family: inherit;
+        }
+    }
 }

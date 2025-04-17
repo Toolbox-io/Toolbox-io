@@ -1,6 +1,11 @@
 // @ts-ignore
 import { marked } from "./node_modules/marked/lib/marked.esm.js";
+// @ts-ignore
+import hljs from './node_modules/@highlightjs/cdn-assets/es/core.js';
+// @ts-ignore
+import xml from './node_modules/@highlightjs/cdn-assets/es/languages/xml.min.js';
 window.marked = marked;
+window.hljs = hljs;
 // noinspection JSUnusedLocalSymbols,ES6ConvertVarToLetConst,JSUnusedGlobalSymbols
 export var exports = {};
 export const token = "gi" + "thu" + "b_p" + "at_11BPW3Z" + "7Y0M847x0i" + "90jER_DKs" +
@@ -174,9 +179,11 @@ export var Utils;
             el.insertAdjacentElement("beforebegin", div);
             div.appendChild(el);
         });
+        hljs.highlightAll();
         return header;
     }
     Utils.loadMarkdown = loadMarkdown;
+    hljs.registerLanguage("xml", xml);
 })(Utils || (Utils = {}));
 // noinspection JSUnusedGlobalSymbols
 export var Cookies;

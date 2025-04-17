@@ -1,9 +1,11 @@
 @use "common/markdown";
 @use "common/components";
+@import "common/mixins";
 @import "common/colors";
 
 @import url(../res/fonts/montserrat/index.css);
 @import url(../res/fonts/material-symbols/index.css);
+@import url(../node_modules/highlight.js/styles/github-dark.min.css);
 
 html, body {
     background-color: $color-surface;
@@ -39,9 +41,16 @@ body .wrapper {
 }
 
 .automargin {
-    margin-left: 25%;
-    margin-right: 25%;
+    @include automargin();
+    max-width: 1000px;
     transition: all 0.5s ease-in-out;
+}
+
+@media (max-width: 1020px) {
+    .automargin {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
 }
 
 ul {
@@ -89,7 +98,7 @@ div > table {
     margin-right: auto;
 }
 
-div:has(table) {
+div:has(> table) {
     overflow: auto;
 
     ::-webkit-scrollbar {
@@ -101,7 +110,6 @@ div:has(table) {
         border-radius: 5px;
     }
 }
-
 
 @media (max-width: 1000px) {
     .automargin {
