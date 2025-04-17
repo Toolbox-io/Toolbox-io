@@ -1,3 +1,5 @@
+@import "../common/colors";
+
 :host {
     backdrop-filter: none;
     border-radius: 0;
@@ -63,7 +65,7 @@
 
         .tab {
             cursor: pointer;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, transform 0.5s ease;
             font-size: 18px;
             position: relative;
 
@@ -76,8 +78,12 @@
                 font-weight: bold;
             }
 
-            &:not(.selected):hover {
+            &:active {
+                transform: scale(0.95);
+            }
 
+            &:not(.selected):hover {
+                color: $color-primary;
             }
         }
     }
