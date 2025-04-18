@@ -56,6 +56,12 @@ body .wrapper {
     }
 }
 
+.centermargin {
+    margin-left: 25%;
+    margin-right: 25%;
+    transition: all 0.5s ease-in-out;
+}
+
 ul {
     text-align: start;
 }
