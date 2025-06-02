@@ -10,7 +10,7 @@
   "dependencies": {
     "@material/web": "^2.3.0",
     "@octokit/core": "^7.0.2",
-    "@octokit/plugin-rest-endpoint-methods": "^14.0.0",
+    "@octokit/plugin-rest-endpoint-methods": "^16.0.0",
     "@octokit/rest": "^22.0.0",
     "@octokit/types": "^14.1.0",
     "@popmotion/easing": "^1.0.2",
