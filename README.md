@@ -2,7 +2,7 @@
 
 <p align="center">
   <img
-    src="src/res/icon.svg"
+    src="res/icon.svg"
     align="center"
     width="64"
     height="64" />
