@@ -1,8 +1,0 @@
-blank_issues_enabled: false
-contact_links:
-  - name: Поддержка в Telegram
-    url: https://t.me/denis0001-dev
-    about: Если есть вопросы, пишите сюда.
-  - name: Почта
-    url: mailto:denis0001.dev@ya.ru
-    about: Если нашли уязвимость в приложении или есть вопросы, пишите сюда.
